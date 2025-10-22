@@ -381,10 +381,17 @@
       <div class="note">
         <div class="note-title">
           <i class="ri-information-fill"></i>
-          Note
+          Important: Non-Encapsulated Component
         </div>
         <div class="note-content">
-          Replace <span class="inline-code">https://your-netlify-site.netlify.app</span> with your actual Netlify deployment URL.
+          This web component is <strong>not encapsulated</strong> - it does not use Shadow DOM. This means:
+          <ul style="margin-top: 8px; padding-left: 20px;">
+            <li>Parent page styles can affect the component's appearance</li>
+            <li>The component's styles are loaded via external CSS files</li>
+            <li>You can customize styling by modifying the parent page's CSS</li>
+          </ul>
+          <br>
+          For style changes or application updates, please contact <strong>conner@a2opinion.com</strong>
         </div>
       </div>
     </div>
@@ -630,25 +637,6 @@ npm run build
   </div>
 
   <script>
-    // Automatically detect current URL and update code examples
-    (function() {
-      const currentOrigin = window.location.origin;
-      const scriptUrl = `${currentOrigin}/s2f-analytics.js`;
-
-      // Update all placeholder URLs
-      document.addEventListener('DOMContentLoaded', () => {
-        const placeholders = document.querySelectorAll('code, .inline-code');
-        placeholders.forEach(el => {
-          if (el.textContent.includes('https://your-netlify-site.netlify.app')) {
-            el.textContent = el.textContent.replace(
-              /https:\/\/your-netlify-site\.netlify\.app/g,
-              currentOrigin
-            );
-          }
-        });
-      });
-    })();
-
     function copyCode(button, elementId) {
       const codeElement = document.getElementById(elementId);
       const code = codeElement.textContent;
