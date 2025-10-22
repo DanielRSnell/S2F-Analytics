@@ -4,7 +4,7 @@ import { ChatRecord } from '../types';
 import { DataService } from '../services/dataService';
 
 export class AnalyticsDashboard extends HTMLElement {
-  private shadow: ShadowRoot;
+  private root: ShadowRoot | HTMLElement;
   private dataService: DataService;
   private s2fId: string = '';
   private gridApi: GridApi | null = null;
@@ -18,7 +18,8 @@ export class AnalyticsDashboard extends HTMLElement {
 
   constructor() {
     super();
-    this.shadow = this.attachShadow({ mode: 'open' });
+    // Use the element itself instead of Shadow DOM to allow parent styles
+    this.root = this;
     this.dataService = new DataService(); // Will use environment variables
   }
 
@@ -57,7 +58,7 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private populateAttributionSourceDropdown() {
-    const sourceSelect = this.shadow.getElementById('attribution-source-filter') as HTMLSelectElement;
+    const sourceSelect = this.root.querySelector('#attribution-source-filter') as HTMLSelectElement;
     if (!sourceSelect) return;
 
     // Get unique attribution sources from the data (utm_source)
@@ -86,7 +87,7 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private render() {
-    this.shadow.innerHTML = `
+    this.root.innerHTML = `
       ${this.getStyles()}
       <div class="dashboard-container">
         <div class="dashboard-header">
@@ -237,7 +238,7 @@ export class AnalyticsDashboard extends HTMLElement {
     `;
 
     // Add filter button functionality
-    const filterButtons = this.shadow.querySelectorAll('.filter-btn');
+    const filterButtons = this.root.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
         const target = e.currentTarget as HTMLElement;
@@ -253,9 +254,9 @@ export class AnalyticsDashboard extends HTMLElement {
     });
 
     // Add column visibility toggle
-    const columnToggleBtn = this.shadow.getElementById('column-toggle-btn');
-    const columnPanel = this.shadow.getElementById('column-visibility-panel');
-    const closePanelBtn = this.shadow.getElementById('close-panel-btn');
+    const columnToggleBtn = this.root.querySelector('#column-toggle-btn') as HTMLElement;
+    const columnPanel = this.root.querySelector('#column-visibility-panel') as HTMLElement;
+    const closePanelBtn = this.root.querySelector('#close-panel-btn') as HTMLElement;
 
     if (columnToggleBtn && columnPanel) {
       columnToggleBtn.addEventListener('click', () => {
@@ -271,8 +272,8 @@ export class AnalyticsDashboard extends HTMLElement {
     }
 
     // Add transcript drawer close functionality
-    const closeDrawerBtn = this.shadow.getElementById('close-drawer-btn');
-    const transcriptOverlay = this.shadow.getElementById('transcript-overlay');
+    const closeDrawerBtn = this.root.querySelector('#close-drawer-btn');
+    const transcriptOverlay = this.root.querySelector('#transcript-overlay');
 
     if (closeDrawerBtn) {
       closeDrawerBtn.addEventListener('click', () => {
@@ -287,8 +288,8 @@ export class AnalyticsDashboard extends HTMLElement {
     }
 
     // Add profile drawer close functionality
-    const closeProfileBtn = this.shadow.getElementById('close-profile-btn');
-    const profileOverlay = this.shadow.getElementById('profile-overlay');
+    const closeProfileBtn = this.root.querySelector('#close-profile-btn');
+    const profileOverlay = this.root.querySelector('#profile-overlay');
 
     if (closeProfileBtn) {
       closeProfileBtn.addEventListener('click', () => {
@@ -303,10 +304,10 @@ export class AnalyticsDashboard extends HTMLElement {
     }
 
     // Add header date filter functionality
-    const applyDateFilterBtn = this.shadow.getElementById('apply-date-filter');
-    const clearDateFilterBtn = this.shadow.getElementById('clear-date-filter');
-    const startDateInput = this.shadow.getElementById('start-date') as HTMLInputElement;
-    const endDateInput = this.shadow.getElementById('end-date') as HTMLInputElement;
+    const applyDateFilterBtn = this.root.querySelector('#apply-date-filter');
+    const clearDateFilterBtn = this.root.querySelector('#clear-date-filter');
+    const startDateInput = this.root.querySelector('#start-date') as HTMLInputElement;
+    const endDateInput = this.root.querySelector('#end-date') as HTMLInputElement;
 
     if (applyDateFilterBtn && startDateInput && endDateInput) {
       applyDateFilterBtn.addEventListener('click', () => {
@@ -339,7 +340,7 @@ export class AnalyticsDashboard extends HTMLElement {
     }
 
     // Add table attribution source filter functionality
-    const attributionSourceFilter = this.shadow.getElementById('attribution-source-filter') as HTMLSelectElement;
+    const attributionSourceFilter = this.root.querySelector('#attribution-source-filter') as HTMLSelectElement;
     if (attributionSourceFilter) {
       attributionSourceFilter.addEventListener('change', () => {
         this.selectedAttributionSource = attributionSourceFilter.value;
@@ -412,7 +413,7 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private renderLoading() {
-    this.shadow.innerHTML = `
+    this.root.innerHTML = `
       ${this.getStyles()}
       <div class="dashboard-container">
         <div class="loading-container">
@@ -424,7 +425,7 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private renderError(message: string) {
-    this.shadow.innerHTML = `
+    this.root.innerHTML = `
       ${this.getStyles()}
       <div class="dashboard-container">
         <div class="error-container">
@@ -439,7 +440,7 @@ export class AnalyticsDashboard extends HTMLElement {
     const analytics = this.dataService.calculateAdvancedAnalytics(this.chartData);
 
     // KPI Cards
-    const summaryGrid = this.shadow.getElementById('summary-grid');
+    const summaryGrid = this.root.querySelector('#summary-grid');
     if (summaryGrid) {
       const avgMinutes = Math.floor(analytics.avgDurationSeconds / 60);
       const avgSeconds = Math.floor(analytics.avgDurationSeconds % 60);
@@ -491,7 +492,7 @@ export class AnalyticsDashboard extends HTMLElement {
     }
 
     // Analytics Sections
-    const breakdownGrid = this.shadow.getElementById('breakdown-grid');
+    const breakdownGrid = this.root.querySelector('#breakdown-grid');
     if (breakdownGrid) {
       breakdownGrid.innerHTML = `
         <!-- Attribution & Traffic Sources -->
@@ -725,7 +726,7 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private initializeGrid() {
-    const gridContainer = this.shadow.getElementById('grid-container');
+    const gridContainer = this.root.querySelector('#grid-container') as HTMLElement;
     if (!gridContainer) return;
 
     const columnDefs: ColDef[] = [
@@ -1081,7 +1082,7 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private setupColumnVisibility(columnDefs: ColDef[]) {
-    const checkboxContainer = this.shadow.getElementById('column-checkboxes');
+    const checkboxContainer = this.root.querySelector('#column-checkboxes');
     if (!checkboxContainer) return;
 
     checkboxContainer.innerHTML = '';
@@ -1177,12 +1178,12 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private openTranscriptDrawer(record: ChatRecord) {
-    const drawer = this.shadow.getElementById('transcript-drawer');
-    const overlay = this.shadow.getElementById('transcript-overlay');
-    const transcriptContent = this.shadow.getElementById('transcript-content');
-    const transcriptId = this.shadow.getElementById('drawer-transcript-id');
-    const transcriptDuration = this.shadow.getElementById('drawer-transcript-duration');
-    const transcriptDate = this.shadow.getElementById('drawer-transcript-date');
+    const drawer = this.root.querySelector('#transcript-drawer') as HTMLElement;
+    const overlay = this.root.querySelector('#transcript-overlay') as HTMLElement;
+    const transcriptContent = this.root.querySelector('#transcript-content');
+    const transcriptId = this.root.querySelector('#drawer-transcript-id');
+    const transcriptDuration = this.root.querySelector('#drawer-transcript-duration');
+    const transcriptDate = this.root.querySelector('#drawer-transcript-date');
 
     if (!drawer || !overlay || !transcriptContent) return;
 
@@ -1224,8 +1225,8 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private closeTranscriptDrawer() {
-    const drawer = this.shadow.getElementById('transcript-drawer');
-    const overlay = this.shadow.getElementById('transcript-overlay');
+    const drawer = this.root.querySelector('#transcript-drawer') as HTMLElement;
+    const overlay = this.root.querySelector('#transcript-overlay') as HTMLElement;
 
     if (drawer && overlay) {
       drawer.classList.remove('open');
@@ -1411,9 +1412,9 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private openProfileDrawer(record: ChatRecord) {
-    const drawer = this.shadow.getElementById('profile-drawer');
-    const overlay = this.shadow.getElementById('profile-overlay');
-    const profileContent = this.shadow.getElementById('profile-content');
+    const drawer = this.root.querySelector('#profile-drawer') as HTMLElement;
+    const overlay = this.root.querySelector('#profile-overlay') as HTMLElement;
+    const profileContent = this.root.querySelector('#profile-content');
 
     if (!drawer || !overlay || !profileContent) return;
 
@@ -1439,8 +1440,8 @@ export class AnalyticsDashboard extends HTMLElement {
   }
 
   private closeProfileDrawer() {
-    const drawer = this.shadow.getElementById('profile-drawer');
-    const overlay = this.shadow.getElementById('profile-overlay');
+    const drawer = this.root.querySelector('#profile-drawer') as HTMLElement;
+    const overlay = this.root.querySelector('#profile-overlay') as HTMLElement;
 
     if (drawer && overlay) {
       drawer.classList.remove('open');
