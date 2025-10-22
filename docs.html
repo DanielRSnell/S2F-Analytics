@@ -15,21 +15,85 @@
     }
 
     :root {
-      --color-primary: #3fb4b8;
-      --color-accent: #2dd4bf;
-      --color-background: #0f172a;
+      /* Color Palette - Dark Teal Theme */
+      --color-background: #060d0e;
+      --color-background-secondary: #0d1819;
+      --color-card: #111f20;
+      --color-card-hover: #1a3537;
       --color-surface: #1e293b;
       --color-surface-light: #334155;
-      --color-text-primary: #f1f5f9;
-      --color-text-secondary: #94a3b8;
-      --color-border: #334155;
-      --color-success: #10b981;
+
+      /* Accent Colors */
+      --color-primary: #3fb4b8;
+      --color-primary-dark: #2d8a8d;
+      --color-accent: #5ac8cd;
+      --color-accent-light: #7dd7db;
+
+      /* Text Colors */
+      --color-text-primary: #e8f5f5;
+      --color-text-secondary: #b0d4d5;
+      --color-text-muted: #6b9a9b;
+
+      /* Border & Divider */
+      --color-border: #2d4f51;
+      --color-divider: #264042;
+
+      /* Status Colors */
+      --color-success: #4ade80;
+      --color-error: #f87171;
+      --color-warning: #fbbf24;
+      --color-info: #60a5fa;
       --color-code-bg: #0f1419;
+
+      /* Typography */
+      --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+
+      --font-size-xs: 0.75rem;
+      --font-size-sm: 0.875rem;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.125rem;
+      --font-size-xl: 1.25rem;
+      --font-size-2xl: 1.5rem;
+      --font-size-3xl: 2rem;
+
+      --font-weight-normal: 400;
+      --font-weight-medium: 500;
+      --font-weight-semibold: 600;
+      --font-weight-bold: 700;
+
+      /* Spacing */
+      --spacing-1: 0.25rem;
+      --spacing-2: 0.5rem;
+      --spacing-3: 0.75rem;
+      --spacing-4: 1rem;
+      --spacing-5: 1.25rem;
+      --spacing-6: 1.5rem;
+      --spacing-8: 2rem;
+      --spacing-10: 2.5rem;
+      --spacing-12: 3rem;
+
+      /* Border Radius */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+
+      /* Transitions */
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-      background: #0a0f1a;
+      font-family: var(--font-family-base);
+      background: var(--color-background);
       color: var(--color-text-primary);
       line-height: 1.6;
       min-height: 100vh;
@@ -88,12 +152,12 @@
     }
 
     .section {
-      background: var(--color-surface);
+      background: var(--color-card);
       border: 1px solid var(--color-border);
-      border-radius: 16px;
+      border-radius: var(--radius-xl);
       padding: 40px;
       margin-bottom: 40px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--shadow-md);
     }
 
     .section-title {
@@ -121,9 +185,9 @@
     .code-block {
       background: var(--color-code-bg);
       border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 24px;
-      margin: 20px 0;
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-6);
+      margin: var(--spacing-5) 0;
       position: relative;
       overflow-x: auto;
     }
@@ -146,21 +210,21 @@
     }
 
     .copy-btn {
-      background: var(--color-surface);
+      background: var(--color-card);
       border: 1px solid var(--color-border);
       color: var(--color-text-secondary);
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: var(--spacing-2) var(--spacing-4);
+      border-radius: var(--radius-md);
       cursor: pointer;
-      font-size: 12px;
+      font-size: var(--font-size-xs);
       display: flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
+      gap: var(--spacing-2);
+      transition: var(--transition-fast);
     }
 
     .copy-btn:hover {
-      background: var(--color-surface-light);
+      background: var(--color-card-hover);
       color: var(--color-text-primary);
       border-color: var(--color-primary);
     }
@@ -173,10 +237,10 @@
 
     pre {
       margin: 0;
-      font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
-      font-size: 14px;
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-sm);
       line-height: 1.6;
-      color: #e2e8f0;
+      color: var(--color-text-primary);
     }
 
     code {
@@ -192,10 +256,10 @@
     .inline-code {
       background: var(--color-code-bg);
       color: var(--color-primary);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 14px;
-      font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+      padding: var(--spacing-1) var(--spacing-3);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-sm);
+      font-family: var(--font-family-mono);
     }
 
     .attribute-list {
@@ -266,11 +330,11 @@
     }
 
     .note {
-      background: rgba(63, 180, 184, 0.1);
+      background: var(--color-card-hover);
       border-left: 4px solid var(--color-primary);
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin: 20px 0;
+      padding: var(--spacing-4) var(--spacing-5);
+      border-radius: var(--radius-lg);
+      margin: var(--spacing-5) 0;
     }
 
     .note-title {
