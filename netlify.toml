@@ -1,8 +1,30 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
+[[headers]]
+  # Apply these headers to all files
+  for = "/*"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  [headers.values]
+    # Allow CORS from any origin for the web component
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"
+
+    # Enable caching for better performance
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Special handling for the main JS bundle
+  for = "/s2f-analytics.js"
+
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  # HTML files should not be cached as aggressively
+  for = "/*.html"
+
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=0, must-revalidate"
