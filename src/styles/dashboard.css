@@ -514,7 +514,7 @@
   }
 }
 
-@container dashboard (max-width: 768px) {
+@container dashboard (max-width: 480px) {
   .stats-grid {
     display: flex;
     grid-template-columns: none;
@@ -554,7 +554,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-@container dashboard (max-width: 768px) {
+@container dashboard (max-width: 480px) {
   .stat-card {
     min-width: 280px;
     flex-shrink: 0;
@@ -728,7 +728,7 @@
   }
 }
 
-@container dashboard (max-width: 768px) {
+@container dashboard (max-width: 480px) {
   .referrer-grid {
     display: flex;
     grid-template-columns: none;
@@ -910,7 +910,7 @@
   }
 }
 
-@container dashboard (max-width: 768px) {
+@container dashboard (max-width: 480px) {
   .job-type-grid {
     display: flex;
     grid-template-columns: none;
@@ -951,7 +951,7 @@
   overflow: hidden;
 }
 
-@container dashboard (max-width: 768px) {
+@container dashboard (max-width: 480px) {
   .job-type-card {
     min-width: 280px;
     flex-shrink: 0;
@@ -2447,11 +2447,6 @@
     font-size: 14px;
   }
 
-  .summary-grid,
-  .breakdown-grid {
-    grid-template-columns: 1fr;
-  }
-
   .table-header {
     flex-direction: column;
     align-items: stretch;
@@ -2554,5 +2549,10 @@
   .filter-clear-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .summary-grid,
+  .breakdown-grid {
+    grid-template-columns: 1fr;
   }
 }
