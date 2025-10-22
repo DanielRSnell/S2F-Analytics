@@ -695,7 +695,32 @@
 
 @media (max-width: 768px) {
   .referrer-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: var(--spacing-4);
+    padding-bottom: var(--spacing-3);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .referrer-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .referrer-grid::-webkit-scrollbar-track {
+    background: var(--color-background-secondary);
+    border-radius: var(--radius-sm);
+  }
+
+  .referrer-grid::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+  }
+
+  .referrer-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
   }
 }
 
@@ -707,6 +732,14 @@
   transition: all var(--transition-fast);
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .referrer-card {
+    min-width: 280px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
 }
 
 .referrer-card::after {
@@ -844,7 +877,32 @@
 
 @media (max-width: 768px) {
   .job-type-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: var(--spacing-4);
+    padding-bottom: var(--spacing-3);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .job-type-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .job-type-grid::-webkit-scrollbar-track {
+    background: var(--color-background-secondary);
+    border-radius: var(--radius-sm);
+  }
+
+  .job-type-grid::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+  }
+
+  .job-type-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
   }
 }
 
@@ -856,6 +914,14 @@
   transition: all var(--transition-fast);
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .job-type-card {
+    min-width: 280px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
 }
 
 .job-type-card::after {
