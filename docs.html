@@ -538,6 +538,103 @@
       </ul>
     </div>
 
+    <!-- Styling & Customization Section -->
+    <div class="section">
+      <h2 class="section-title">
+        <i class="ri-palette-fill"></i>
+        Styling & Customization
+      </h2>
+      <p class="section-description">
+        The dashboard uses CSS variables for easy customization. Override these variables in your page's CSS to match your brand.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-language">CSS</span>
+          <button class="copy-btn" onclick="copyCode(this, 'css-variables')">
+            <i class="ri-file-copy-line"></i> Copy
+          </button>
+        </div>
+        <pre id="css-variables"><code>/* Add this CSS to your page to customize the dashboard */
+s2f-analytics-dashboard {
+  /* Primary brand color (teal by default) */
+  --color-primary: #3fb4b8;
+  --color-accent: #4dd4d8;
+
+  /* Background colors */
+  --color-background: #0f172a;
+  --color-background-secondary: #1e4244;
+  --color-card: #1a3638;
+  --color-card-hover: #224a4c;
+
+  /* Text colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+
+  /* Border & divider colors */
+  --color-border: #2d4f51;
+  --color-divider: rgba(63, 180, 184, 0.2);
+
+  /* Spacing (8px base unit) */
+  --spacing-2: 4px;
+  --spacing-3: 8px;
+  --spacing-4: 12px;
+  --spacing-5: 16px;
+  --spacing-6: 20px;
+  --spacing-8: 24px;
+
+  /* Font sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+}</code></pre>
+      </div>
+
+      <div class="note" style="margin-top: 20px;">
+        <div class="note-title">
+          <i class="ri-information-fill"></i>
+          Background Control
+        </div>
+        <div class="note-content">
+          The dashboard container has a <strong>transparent background</strong> by default. You can add a background to the parent element or wrap it in a styled container:
+          <div class="code-block" style="margin-top: 12px;">
+            <pre><code>&lt;div style="background: linear-gradient(135deg, #0f172a 0%, #1e4244 100%); padding: 20px;"&gt;
+  &lt;s2f-analytics-dashboard s2fid="your-id"&gt;&lt;/s2f-analytics-dashboard&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 20px;">
+        <div class="note-title">
+          <i class="ri-lightbulb-fill"></i>
+          Quick Branding Example
+        </div>
+        <div class="note-content">
+          Change the primary color to match your brand:
+          <div class="code-block" style="margin-top: 12px;">
+            <pre><code>&lt;style&gt;
+  s2f-analytics-dashboard {
+    --color-primary: #6366f1; /* Indigo */
+    --color-accent: #818cf8;
+  }
+&lt;/style&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- CDN Alternatives Section -->
     <div class="section">
       <h2 class="section-title">

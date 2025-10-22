@@ -6,7 +6,7 @@
 
 .dashboard-container {
   font-family: var(--font-family-base);
-  background: linear-gradient(135deg, var(--color-background) 0%, #0a1d1e 100%);
+  background: transparent;
   color: var(--color-text-primary);
   min-height: 100vh;
   padding: var(--spacing-8);
