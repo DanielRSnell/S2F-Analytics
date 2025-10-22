@@ -41,15 +41,19 @@ The generated `analysis-report.md` includes:
 ## Use Cases
 
 ### Verify Dashboard Accuracy
+
 Compare the numbers in the generated report with what's shown in the dashboard to ensure calculations are correct.
 
 ### Understand Attribution Logic
+
 See exactly how traffic sources are identified and counted from the `webSession.utm.utm_source` field.
 
 ### Audit Data Quality
+
 Review the "Data Quality Issues" section to identify records with missing or incomplete data.
 
 ### Debug Analytics
+
 If dashboard numbers look unexpected, run this analysis to see the raw calculations and identify issues.
 
 ## How Analytics Work
@@ -80,7 +84,7 @@ const channel = record.source;
 A chat is considered "booked" when:
 
 ```javascript
-const isBooked = record.jobId !== null && record.jobId !== '';
+const isBooked = record.jobId !== null && record.jobId !== "";
 ```
 
 ### Bookable Status
@@ -88,7 +92,7 @@ const isBooked = record.jobId !== null && record.jobId !== '';
 A chat is "bookable" when:
 
 ```javascript
-const isBookable = record.bookable === 'Bookable';
+const isBookable = record.bookable === "Bookable";
 ```
 
 ## Files
@@ -102,7 +106,7 @@ const isBookable = record.bookable === 'Bookable';
 To analyze different data, update the path in `analyze.js`:
 
 ```javascript
-const dataPath = path.join(__dirname, '../path/to/your/data.json');
+const dataPath = path.join(__dirname, "../path/to/your/data.json");
 ```
 
 The data must follow the same structure as `mock/data/response.json`.

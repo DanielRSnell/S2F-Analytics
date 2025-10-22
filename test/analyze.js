@@ -7,12 +7,12 @@
  * a markdown report showing how the analytics are calculated.
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 // Read the production data
-const dataPath = path.join(__dirname, '../mock/data/response.json');
-const rawData = fs.readFileSync(dataPath, 'utf8');
+const dataPath = path.join(__dirname, "../mock/data/response.json");
+const rawData = fs.readFileSync(dataPath, "utf8");
 const data = JSON.parse(rawData);
 const records = data.list;
 
@@ -34,17 +34,18 @@ const analytics = {
   clickIds: {
     gclid: 0,
     fbclid: 0,
-    msclkid: 0
+    msclkid: 0,
   },
   noWebSession: 0,
   noUtmData: 0,
-  referrerDomains: new Map()
+  referrerDomains: new Map(),
 };
 
 // Process each record
 records.forEach((record, index) => {
-  const isBooked = record.jobId !== null && record.jobId !== undefined && record.jobId !== '';
-  const isBookable = record.bookable === 'Bookable';
+  const isBooked =
+    record.jobId !== null && record.jobId !== undefined && record.jobId !== "";
+  const isBookable = record.bookable === "Bookable";
 
   if (isBookable) analytics.bookableChats++;
   if (isBooked) analytics.bookedChats++;
@@ -54,20 +55,26 @@ records.forEach((record, index) => {
   else analytics.newCustomers++;
 
   // Incomplete conversations
-  if (record.bookable && record.bookable.includes('Incomplete')) {
+  if (record.bookable && record.bookable.includes("Incomplete")) {
     analytics.incompleteConversations++;
   }
 
   // Channel analysis (source field)
-  const channel = record.source || 'Unknown';
-  const channelStats = analytics.channelMap.get(channel) || { total: 0, booked: 0 };
+  const channel = record.source || "Unknown";
+  const channelStats = analytics.channelMap.get(channel) || {
+    total: 0,
+    booked: 0,
+  };
   channelStats.total++;
   if (isBooked) channelStats.booked++;
   analytics.channelMap.set(channel, channelStats);
 
   // Job type analysis
   if (record.jobType) {
-    const jobStats = analytics.jobTypeMap.get(record.jobType) || { total: 0, booked: 0 };
+    const jobStats = analytics.jobTypeMap.get(record.jobType) || {
+      total: 0,
+      booked: 0,
+    };
     jobStats.total++;
     if (isBooked) jobStats.booked++;
     analytics.jobTypeMap.set(record.jobType, jobStats);
@@ -89,19 +96,28 @@ records.forEach((record, index) => {
     const lowerReferrer = referrer.toLowerCase();
 
     // Check for Yahoo
-    if (lowerReferrer.includes('yahoo.com') || lowerReferrer.includes('search.yahoo')) {
-      utmSource = 'yahoo';
+    if (
+      lowerReferrer.includes("yahoo.com") ||
+      lowerReferrer.includes("search.yahoo")
+    ) {
+      utmSource = "yahoo";
     }
     // Check for Precision Door domains (pd or precision in domain)
-    else if (lowerReferrer.includes('precisiondoor') ||
-             lowerReferrer.includes('precision-door') ||
-             (lowerReferrer.includes('pd') && (lowerReferrer.includes('.com') || lowerReferrer.includes('.net')))) {
-      utmSource = 'precision-door';
+    else if (
+      lowerReferrer.includes("precisiondoor") ||
+      lowerReferrer.includes("precision-door") ||
+      (lowerReferrer.includes("pd") &&
+        (lowerReferrer.includes(".com") || lowerReferrer.includes(".net")))
+    ) {
+      utmSource = "precision-door";
     }
   }
 
   if (utmSource) {
-    const stats = analytics.utmSourceMap.get(utmSource) || { total: 0, booked: 0 };
+    const stats = analytics.utmSourceMap.get(utmSource) || {
+      total: 0,
+      booked: 0,
+    };
     stats.total++;
     if (isBooked) stats.booked++;
     analytics.utmSourceMap.set(utmSource, stats);
@@ -120,10 +136,10 @@ records.forEach((record, index) => {
 
     // Referrer tracking
     const referrer = attribution.referrer;
-    if (referrer && referrer !== 'direct' && referrer !== '') {
+    if (referrer && referrer !== "direct" && referrer !== "") {
       try {
         const url = new URL(referrer);
-        const domain = url.hostname.replace('www.', '');
+        const domain = url.hostname.replace("www.", "");
         const count = analytics.referrerDomains.get(domain) || 0;
         analytics.referrerDomains.set(domain, count + 1);
       } catch (e) {
@@ -134,9 +150,18 @@ records.forEach((record, index) => {
 });
 
 // Calculate rates
-const conversionRate = analytics.totalChats > 0 ? (analytics.bookedChats / analytics.totalChats) * 100 : 0;
-const bookableRate = analytics.totalChats > 0 ? (analytics.bookableChats / analytics.totalChats) * 100 : 0;
-const bookingRate = analytics.bookableChats > 0 ? (analytics.bookedChats / analytics.bookableChats) * 100 : 0;
+const conversionRate =
+  analytics.totalChats > 0
+    ? (analytics.bookedChats / analytics.totalChats) * 100
+    : 0;
+const bookableRate =
+  analytics.totalChats > 0
+    ? (analytics.bookableChats / analytics.totalChats) * 100
+    : 0;
+const bookingRate =
+  analytics.bookableChats > 0
+    ? (analytics.bookedChats / analytics.bookableChats) * 100
+    : 0;
 
 // Generate markdown report
 let markdown = `# WebSession Data Analysis Report
@@ -170,7 +195,7 @@ let markdown = `# WebSession Data Analysis Report
 
 ### UTM Source Breakdown
 
-${analytics.utmSourceMap.size === 0 ? '_No UTM source data found in records_' : ''}
+${analytics.utmSourceMap.size === 0 ? "_No UTM source data found in records_" : ""}
 
 | UTM Source | Total Chats | Booked | Conv. Rate |
 |------------|-------------|--------|------------|
@@ -179,7 +204,8 @@ ${Array.from(analytics.utmSourceMap.entries())
   .map(([source, stats]) => {
     const convRate = stats.total > 0 ? (stats.booked / stats.total) * 100 : 0;
     return `| ${source} | ${stats.total} | ${stats.booked} | ${convRate.toFixed(1)}% |`;
-  }).join('\n')}
+  })
+  .join("\n")}
 
 ### Click ID Distribution
 
@@ -191,7 +217,7 @@ ${Array.from(analytics.utmSourceMap.entries())
 
 ### Top Referrer Domains
 
-${analytics.referrerDomains.size === 0 ? '_No referrer data found_' : ''}
+${analytics.referrerDomains.size === 0 ? "_No referrer data found_" : ""}
 
 | Domain | Count |
 |--------|-------|
@@ -199,7 +225,7 @@ ${Array.from(analytics.referrerDomains.entries())
   .sort((a, b) => b[1] - a[1])
   .slice(0, 10)
   .map(([domain, count]) => `| ${domain} | ${count} |`)
-  .join('\n')}
+  .join("\n")}
 
 ---
 
@@ -211,9 +237,11 @@ ${Array.from(analytics.channelMap.entries())
   .sort((a, b) => b[1].total - a[1].total)
   .map(([channel, stats]) => {
     const convRate = stats.total > 0 ? (stats.booked / stats.total) * 100 : 0;
-    const share = analytics.totalChats > 0 ? (stats.total / analytics.totalChats) * 100 : 0;
+    const share =
+      analytics.totalChats > 0 ? (stats.total / analytics.totalChats) * 100 : 0;
     return `| ${channel} | ${stats.total} | ${stats.booked} | ${convRate.toFixed(1)}% | ${share.toFixed(1)}% |`;
-  }).join('\n')}
+  })
+  .join("\n")}
 
 ---
 
@@ -226,8 +254,9 @@ ${Array.from(analytics.jobTypeMap.entries())
   .slice(0, 10)
   .map(([jobType, stats]) => {
     const convRate = stats.total > 0 ? (stats.booked / stats.total) * 100 : 0;
-    return `| ${jobType || 'Unknown'} | ${stats.total} | ${stats.booked} | ${convRate.toFixed(1)}% |`;
-  }).join('\n')}
+    return `| ${jobType || "Unknown"} | ${stats.total} | ${stats.booked} | ${convRate.toFixed(1)}% |`;
+  })
+  .join("\n")}
 
 ---
 
@@ -254,12 +283,12 @@ ${Array.from(analytics.jobTypeMap.entries())
 
 ### Record with UTM Data
 \`\`\`json
-${JSON.stringify(records.find(r => r.webSession?.utm?.utm_source)?.webSession || 'None found', null, 2)}
+${JSON.stringify(records.find((r) => r.webSession?.utm?.utm_source)?.webSession || "None found", null, 2)}
 \`\`\`
 
 ### Record without UTM Data (Direct Traffic)
 \`\`\`json
-${JSON.stringify(records.find(r => !r.webSession?.utm?.utm_source)?.webSession || 'None found', null, 2)}
+${JSON.stringify(records.find((r) => !r.webSession?.utm?.utm_source)?.webSession || "None found", null, 2)}
 \`\`\`
 
 ---
@@ -277,17 +306,21 @@ This report matches the analytics shown in the S2F Analytics Dashboard.
 `;
 
 // Write markdown file
-const outputPath = path.join(__dirname, 'analysis-report.md');
-fs.writeFileSync(outputPath, markdown, 'utf8');
+const outputPath = path.join(__dirname, "analysis-report.md");
+fs.writeFileSync(outputPath, markdown, "utf8");
 
-console.log('✅ Analysis complete!');
+console.log("✅ Analysis complete!");
 console.log(`📄 Report generated: ${outputPath}\n`);
 
 // Print summary to console
-console.log('Summary:');
+console.log("Summary:");
 console.log(`- Total Chats: ${analytics.totalChats}`);
-console.log(`- Booked: ${analytics.bookedChats} (${conversionRate.toFixed(1)}%)`);
+console.log(
+  `- Booked: ${analytics.bookedChats} (${conversionRate.toFixed(1)}%)`,
+);
 console.log(`- Direct Traffic: ${analytics.directTraffic}`);
 console.log(`- Paid Traffic: ${analytics.paidTraffic}`);
 console.log(`- UTM Sources Found: ${analytics.utmSourceMap.size}`);
-console.log(`- Channels: ${Array.from(analytics.channelMap.keys()).join(', ')}`);
+console.log(
+  `- Channels: ${Array.from(analytics.channelMap.keys()).join(", ")}`,
+);

@@ -7,14 +7,14 @@
 
 ## 📊 Key Performance Indicators
 
-| Metric | Value | Percentage |
-|--------|-------|------------|
-| **Total Chats** | 665 | 100% |
-| **Bookable Chats** | 308 | 46.3% |
-| **Booked Chats** | 134 | 20.2% |
-| **Conversion Rate** | 20.2% | (Booked / Total) |
-| **Booking Rate** | 43.5% | (Booked / Bookable) |
-| **Revenue Opportunities** | 174 | (Bookable but not Booked) |
+| Metric                    | Value | Percentage                |
+| ------------------------- | ----- | ------------------------- |
+| **Total Chats**           | 665   | 100%                      |
+| **Bookable Chats**        | 308   | 46.3%                     |
+| **Booked Chats**          | 134   | 20.2%                     |
+| **Conversion Rate**       | 20.2% | (Booked / Total)          |
+| **Booking Rate**          | 43.5% | (Booked / Bookable)       |
+| **Revenue Opportunities** | 174   | (Bookable but not Booked) |
 
 ---
 
@@ -22,98 +22,95 @@
 
 ### Traffic Split
 
-| Type | Count | Percentage |
-|------|-------|------------|
-| **Direct Traffic** | 97 | 14.6% |
-| **Paid Traffic** | 568 | 85.4% |
+| Type               | Count | Percentage |
+| ------------------ | ----- | ---------- |
+| **Direct Traffic** | 97    | 14.6%      |
+| **Paid Traffic**   | 568   | 85.4%      |
 
 ### UTM Source Breakdown
 
-
-
-| UTM Source | Total Chats | Booked | Conv. Rate |
-|------------|-------------|--------|------------|
-| precision-door | 261 | 69 | 26.4% |
-| yahoo | 191 | 0 | 0.0% |
-| google | 76 | 18 | 23.7% |
-| gmb | 14 | 3 | 21.4% |
-| bing | 11 | 5 | 45.5% |
-| GMBListing | 9 | 6 | 66.7% |
-| facebook | 3 | 0 | 0.0% |
-| Facebook | 2 | 0 | 0.0% |
-| chatgpt.com | 1 | 1 | 100.0% |
+| UTM Source     | Total Chats | Booked | Conv. Rate |
+| -------------- | ----------- | ------ | ---------- |
+| precision-door | 261         | 69     | 26.4%      |
+| yahoo          | 191         | 0      | 0.0%       |
+| google         | 76          | 18     | 23.7%      |
+| gmb            | 14          | 3      | 21.4%      |
+| bing           | 11          | 5      | 45.5%      |
+| GMBListing     | 9           | 6      | 66.7%      |
+| facebook       | 3           | 0      | 0.0%       |
+| Facebook       | 2           | 0      | 0.0%       |
+| chatgpt.com    | 1           | 1      | 100.0%     |
 
 ### Click ID Distribution
 
-| Platform | Count |
-|----------|-------|
-| **Google Ads (gclid)** | 196 |
-| **Facebook Ads (fbclid)** | 6 |
-| **Microsoft Ads (msclkid)** | 239 |
+| Platform                    | Count |
+| --------------------------- | ----- |
+| **Google Ads (gclid)**      | 196   |
+| **Facebook Ads (fbclid)**   | 6     |
+| **Microsoft Ads (msclkid)** | 239   |
 
 ### Top Referrer Domains
 
-
-
-| Domain | Count |
-|--------|-------|
-| pdsnj.com | 259 |
-| search.yahoo.com | 190 |
-| google.com | 152 |
-| bing.com | 12 |
-| youtube.com | 9 |
-| googleads.g.doubleclick.net | 4 |
-| deals.allinfohome.com | 3 |
-| duckduckgo.com | 3 |
-| m.facebook.com | 3 |
-| precisiondoorhudsonvalley.com | 2 |
+| Domain                        | Count |
+| ----------------------------- | ----- |
+| pdsnj.com                     | 259   |
+| search.yahoo.com              | 190   |
+| google.com                    | 152   |
+| bing.com                      | 12    |
+| youtube.com                   | 9     |
+| googleads.g.doubleclick.net   | 4     |
+| deals.allinfohome.com         | 3     |
+| duckduckgo.com                | 3     |
+| m.facebook.com                | 3     |
+| precisiondoorhudsonvalley.com | 2     |
 
 ---
 
 ## 📱 Channel Performance
 
 | Channel | Total Chats | Booked | Conv. Rate | Share |
-|---------|-------------|--------|------------|-------|
-| Unknown | 432 | 75 | 17.4% | 65.0% |
-| Webchat | 226 | 59 | 26.1% | 34.0% |
-| Voice | 6 | 0 | 0.0% | 0.9% |
-| SMS | 1 | 0 | 0.0% | 0.2% |
+| ------- | ----------- | ------ | ---------- | ----- |
+| Unknown | 432         | 75     | 17.4%      | 65.0% |
+| Webchat | 226         | 59     | 26.1%      | 34.0% |
+| Voice   | 6           | 0      | 0.0%       | 0.9%  |
+| SMS     | 1           | 0      | 0.0%       | 0.2%  |
 
 ---
 
 ## 🔧 Job Type Performance
 
-| Job Type | Total | Booked | Conv. Rate |
-|----------|-------|--------|------------|
-| repair | 141 | 92 | 65.2% |
-| door-estimate | 38 | 23 | 60.5% |
-| openers | 27 | 18 | 66.7% |
-| commercial-new-garage-door | 2 | 1 | 50.0% |
+| Job Type                   | Total | Booked | Conv. Rate |
+| -------------------------- | ----- | ------ | ---------- |
+| repair                     | 141   | 92     | 65.2%      |
+| door-estimate              | 38    | 23     | 60.5%      |
+| openers                    | 27    | 18     | 66.7%      |
+| commercial-new-garage-door | 2     | 1      | 50.0%      |
 
 ---
 
 ## 👥 Customer Insights
 
-| Type | Count | Percentage |
-|------|-------|------------|
-| **New Customers** | 657 | 98.8% |
-| **Existing Customers** | 8 | 1.2% |
+| Type                   | Count | Percentage |
+| ---------------------- | ----- | ---------- |
+| **New Customers**      | 657   | 98.8%      |
+| **Existing Customers** | 8     | 1.2%       |
 
 ---
 
 ## ⚠️ Data Quality Issues
 
-| Issue | Count | Notes |
-|-------|-------|-------|
-| **No WebSession Data** | 0 | Records missing webSession object |
-| **No UTM Data** | 97 | Records with null utm_source (Direct Traffic) |
-| **Incomplete Conversations** | 210 | Conversations marked as incomplete |
+| Issue                        | Count | Notes                                         |
+| ---------------------------- | ----- | --------------------------------------------- |
+| **No WebSession Data**       | 0     | Records missing webSession object             |
+| **No UTM Data**              | 97    | Records with null utm_source (Direct Traffic) |
+| **Incomplete Conversations** | 210   | Conversations marked as incomplete            |
 
 ---
 
 ## 🔬 Sample WebSession Objects
 
 ### Record with UTM Data
+
 ```json
 {
   "attribution": {
@@ -163,9 +160,7 @@
     "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
     "platform": "iPhone",
     "language": "en-US",
-    "languages": [
-      "en-US"
-    ],
+    "languages": ["en-US"],
     "cookies_enabled": true,
     "online_status": true
   },
@@ -193,6 +188,7 @@
 ```
 
 ### Record without UTM Data (Direct Traffic)
+
 ```json
 {
   "attribution": {
@@ -228,9 +224,7 @@
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
     "platform": "Win32",
     "language": "en-US",
-    "languages": [
-      "en-US"
-    ],
+    "languages": ["en-US"],
     "cookies_enabled": true,
     "online_status": true,
     "do_not_track": null

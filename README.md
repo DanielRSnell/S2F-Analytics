@@ -7,6 +7,7 @@ A high-fidelity analytics dashboard web component for tracking and analyzing cha
 ## Features
 
 ### Analytics & Reporting
+
 - **Real-time KPIs**: Total chats, conversion rates, average duration, revenue opportunities
 - **Channel Performance**: SMS, Voice, and Web chat analytics with conversion tracking
 - **Attribution Analytics**: Track performance by marketing source (Google, Bing, GMB, Facebook, etc.)
@@ -14,6 +15,7 @@ A high-fidelity analytics dashboard web component for tracking and analyzing cha
 - **Customer Insights**: New vs existing customer metrics
 
 ### Interactive Data Table
+
 - **Advanced Filtering**: Filter by booking status, customer type, completion status
 - **Attribution Source Filter**: Filter by marketing channel (Bing, Google Ads, Business Profile, etc.)
 - **Date Range Filtering**: Custom date range selection for historical analysis
@@ -23,6 +25,7 @@ A high-fidelity analytics dashboard web component for tracking and analyzing cha
 - **Profile Drawer**: Detailed customer profile view with contact information
 
 ### Design
+
 - **Dark Theme**: Professional dark mode interface with gradient accents
 - **Responsive Layout**: Optimized for desktop and mobile devices
 - **High Fidelity UI**: Polished cards, gradients, and micro-interactions
@@ -94,16 +97,19 @@ npm run preview
 #### Option 1: Using Netlify CLI
 
 1. Install Netlify CLI globally:
+
 ```bash
 npm install -g netlify-cli
 ```
 
 2. Login to Netlify:
+
 ```bash
 netlify login
 ```
 
 3. Deploy:
+
 ```bash
 netlify deploy --prod
 ```
@@ -126,6 +132,7 @@ netlify deploy --prod
 #### Option 3: Drag & Drop
 
 1. Build the project locally:
+
 ```bash
 npm run build
 ```
@@ -142,13 +149,13 @@ The project includes a `netlify.toml` configuration file that handles build sett
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <script type="module" src="./dist/s2f-analytics.js"></script>
-</head>
-<body>
-  <!-- Mount the dashboard with a market ID -->
-  <s2f-analytics-dashboard s2fid="pd-northern-nj"></s2f-analytics-dashboard>
-</body>
+  <head>
+    <script type="module" src="./dist/s2f-analytics.js"></script>
+  </head>
+  <body>
+    <!-- Mount the dashboard with a market ID -->
+    <s2f-analytics-dashboard s2fid="pd-northern-nj"></s2f-analytics-dashboard>
+  </body>
 </html>
 ```
 
@@ -165,21 +172,21 @@ interface ChatRecord {
   Id: number;
   userId: string;
   transcript: string | null;
-  s2fId: string;                    // Market ID
-  jobType: string | null;           // Service type
-  timeStamp: string | null;         // ISO datetime
-  jobId: string | null;             // Booking ID (null = not booked)
+  s2fId: string; // Market ID
+  jobType: string | null; // Service type
+  timeStamp: string | null; // ISO datetime
+  jobId: string | null; // Booking ID (null = not booked)
   firstName: string | null;
   lastName: string | null;
   phoneNumber: string | null;
   email: string | null;
-  source: string | null;            // Channel: SMS, Voice, Webchat
-  duration: number | null;          // Call/chat duration in seconds
+  source: string | null; // Channel: SMS, Voice, Webchat
+  duration: number | null; // Call/chat duration in seconds
   existingCustomer: boolean;
-  bookable: string | null;          // "Bookable", "Not Bookable - Incomplete Conversation", etc.
+  bookable: string | null; // "Bookable", "Not Bookable - Incomplete Conversation", etc.
   webSession: {
     utm: {
-      utm_source: string | null;    // Attribution source: google, bing, gmb, etc.
+      utm_source: string | null; // Attribution source: google, bing, gmb, etc.
       utm_medium: string | null;
       utm_campaign: string | null;
       // ... other UTM parameters
@@ -280,6 +287,7 @@ const logoUrl = `https://img.logo.dev/${normalized.domain}?token=YOUR_TOKEN_HERE
 - Safari 14+
 
 Requires native support for:
+
 - Web Components (Custom Elements v1)
 - Shadow DOM
 - ES2020 features

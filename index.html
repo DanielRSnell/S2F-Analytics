@@ -1,34 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S2F Analytics Dashboard</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S2F Analytics Dashboard</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    }
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+      }
 
-    .analytics-container {
-      background: #0a0f1a;
-    }
-  </style>
-</head>
-<body>
-  <!--
+      .analytics-container {
+        background: #0a0f1a;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
     S2F Analytics Dashboard Web Component
 
     All required CSS and scripts are auto-loaded by the component.
     Just add the script tag and the web component!
   -->
-  <div class="analytics-container">
-    <s2f-analytics-dashboard s2fid="pd-northern-nj"></s2f-analytics-dashboard>
-  </div>
+    <div class="analytics-container">
+      <s2f-analytics-dashboard s2fid="pd-northern-nj"></s2f-analytics-dashboard>
+    </div>
 
-  <!-- Single script tag loads everything -->
-  <script type="module" src="./src/index.ts"></script>
-</body>
+    <!-- Single script tag loads everything -->
+    <script type="module" src="./src/index.ts"></script>
+  </body>
 </html>

@@ -1,1 +1,1684 @@
-{"openapi":"3.0.0","info":{"title":"nocodb","version":"2.0"},"servers":[{"url":"https://base.s2fleet.dev"},{"url":"{customUrl}","variables":{"customUrl":{"default":"https://base.s2fleet.dev","description":"Provide custom nocodb app base url"}}}],"paths":{"/api/v2/tables/mn49049zswgtu0c/records":{"get":{"summary":"Main Data Layer - All Agents list","operationId":"main data layer - all agents-db-table-row-list","description":"List of all rows from Main Data Layer - All Agents table and response data fields can be filtered based on query params.","tags":["Main Data Layer - All Agents"],"parameters":[{"schema":{"type":"string","enum":["vwmsst2prxf672cd"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwmsst2prxf672cd - Default view","name":"viewId","in":"query","required":false},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."},{"schema":{"type":"string"},"in":"query","name":"sort","description":"Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"},{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"},{"schema":{"type":"number","minimum":1},"in":"query","name":"limit","description":"The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.","example":25},{"schema":{"type":"number","minimum":0,"maximum":1},"in":"query","name":"shuffle","description":"The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.","example":0},{"schema":{"type":"number","minimum":0},"in":"query","name":"offset","description":"The `offset` parameter used for pagination, the value helps to select collection from a certain index.","example":0}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"list":{"type":"array","items":{"$ref":"#/components/schemas/Main Data Layer - All AgentsResponse"}},"pageInfo":{"$ref":"#/components/schemas/Paginated"}}}}}}}},"post":{"summary":"Main Data Layer - All Agents create","description":"Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.","operationId":"main data layer - all agents-create","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Main Data Layer - All AgentsResponse"}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["Main Data Layer - All Agents"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/Main Data Layer - All AgentsRequest"},{"type":"array","items":{"$ref":"#/components/schemas/Main Data Layer - All AgentsRequest"}}]}}}}},"patch":{"summary":"Main Data Layer - All Agents update","operationId":"main data layer - all agents-update","description":"Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["Main Data Layer - All Agents"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/Main Data Layer - All AgentsRequest"},{"type":"array","items":{"$ref":"#/components/schemas/Main Data Layer - All AgentsRequest"}}]}}}}},"delete":{"summary":"Main Data Layer - All Agents delete","operationId":"main data layer - all agents-delete","responses":{"200":{"description":"OK"}},"tags":["Main Data Layer - All Agents"],"description":"Delete a row by using the **primary key** column value.","requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/Main Data Layer - All AgentsIdRequest"},{"type":"array","items":{"$ref":"#/components/schemas/Main Data Layer - All AgentsIdRequest"}}]}}}}}},"/api/v2/tables/mn49049zswgtu0c/records/{recordId}":{"get":{"parameters":[{"schema":{"type":"string"},"name":"recordId","in":"path","required":true,"example":1,"description":"Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."}],"summary":"Main Data Layer - All Agents read","description":"Read a row data by using the **primary key** column value.","operationId":"main data layer - all agents-read","tags":["Main Data Layer - All Agents"],"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Main Data Layer - All AgentsResponse"}}}}}}},"/api/v2/tables/mn49049zswgtu0c/records/count":{"parameters":[{"schema":{"type":"string","enum":["vwmsst2prxf672cd"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwmsst2prxf672cd - Default view","name":"viewId","in":"query","required":false}],"get":{"summary":"Main Data Layer - All Agents count","operationId":"main data layer - all agents-count","description":"Get rows count of a table by applying optional filters.","tags":["Main Data Layer - All Agents"],"parameters":[{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"count":{"type":"number"}},"required":["list","pageInfo"]},"examples":{"Example 1":{"value":{"count":3}}}}}},"400":{"$ref":"#/components/responses/BadRequest"}}}},"/api/v2/tables/m0ssac78idb3v5k/records":{"get":{"summary":"S2F Demo Agent Conversations list","operationId":"s2f demo agent conversations-db-table-row-list","description":"List of all rows from S2F Demo Agent Conversations table and response data fields can be filtered based on query params.","tags":["S2F Demo Agent Conversations"],"parameters":[{"schema":{"type":"string","enum":["vwzzj9530y05wjub"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwzzj9530y05wjub - Default view","name":"viewId","in":"query","required":false},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."},{"schema":{"type":"string"},"in":"query","name":"sort","description":"Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"},{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"},{"schema":{"type":"number","minimum":1},"in":"query","name":"limit","description":"The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.","example":25},{"schema":{"type":"number","minimum":0,"maximum":1},"in":"query","name":"shuffle","description":"The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.","example":0},{"schema":{"type":"number","minimum":0},"in":"query","name":"offset","description":"The `offset` parameter used for pagination, the value helps to select collection from a certain index.","example":0}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"list":{"type":"array","items":{"$ref":"#/components/schemas/S2F Demo Agent ConversationsResponse"}},"pageInfo":{"$ref":"#/components/schemas/Paginated"}}}}}}}},"post":{"summary":"S2F Demo Agent Conversations create","description":"Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.","operationId":"s2f demo agent conversations-create","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/S2F Demo Agent ConversationsResponse"}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["S2F Demo Agent Conversations"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/S2F Demo Agent ConversationsRequest"},{"type":"array","items":{"$ref":"#/components/schemas/S2F Demo Agent ConversationsRequest"}}]}}}}},"patch":{"summary":"S2F Demo Agent Conversations update","operationId":"s2f demo agent conversations-update","description":"Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["S2F Demo Agent Conversations"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/S2F Demo Agent ConversationsRequest"},{"type":"array","items":{"$ref":"#/components/schemas/S2F Demo Agent ConversationsRequest"}}]}}}}},"delete":{"summary":"S2F Demo Agent Conversations delete","operationId":"s2f demo agent conversations-delete","responses":{"200":{"description":"OK"}},"tags":["S2F Demo Agent Conversations"],"description":"Delete a row by using the **primary key** column value.","requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/S2F Demo Agent ConversationsIdRequest"},{"type":"array","items":{"$ref":"#/components/schemas/S2F Demo Agent ConversationsIdRequest"}}]}}}}}},"/api/v2/tables/m0ssac78idb3v5k/records/{recordId}":{"get":{"parameters":[{"schema":{"type":"string"},"name":"recordId","in":"path","required":true,"example":1,"description":"Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."}],"summary":"S2F Demo Agent Conversations read","description":"Read a row data by using the **primary key** column value.","operationId":"s2f demo agent conversations-read","tags":["S2F Demo Agent Conversations"],"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/S2F Demo Agent ConversationsResponse"}}}}}}},"/api/v2/tables/m0ssac78idb3v5k/records/count":{"parameters":[{"schema":{"type":"string","enum":["vwzzj9530y05wjub"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwzzj9530y05wjub - Default view","name":"viewId","in":"query","required":false}],"get":{"summary":"S2F Demo Agent Conversations count","operationId":"s2f demo agent conversations-count","description":"Get rows count of a table by applying optional filters.","tags":["S2F Demo Agent Conversations"],"parameters":[{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"count":{"type":"number"}},"required":["list","pageInfo"]},"examples":{"Example 1":{"value":{"count":3}}}}}},"400":{"$ref":"#/components/responses/BadRequest"}}}},"/api/v2/tables/msiu1rgp7qp42o7/records":{"get":{"summary":"Facebook Ads Conversations list","operationId":"facebook ads conversations-db-table-row-list","description":"List of all rows from Facebook Ads Conversations table and response data fields can be filtered based on query params.","tags":["Facebook Ads Conversations"],"parameters":[{"schema":{"type":"string","enum":["vwrrkv0mrygt79ek"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwrrkv0mrygt79ek - Default view","name":"viewId","in":"query","required":false},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."},{"schema":{"type":"string"},"in":"query","name":"sort","description":"Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"},{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"},{"schema":{"type":"number","minimum":1},"in":"query","name":"limit","description":"The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.","example":25},{"schema":{"type":"number","minimum":0,"maximum":1},"in":"query","name":"shuffle","description":"The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.","example":0},{"schema":{"type":"number","minimum":0},"in":"query","name":"offset","description":"The `offset` parameter used for pagination, the value helps to select collection from a certain index.","example":0}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"list":{"type":"array","items":{"$ref":"#/components/schemas/Facebook Ads ConversationsResponse"}},"pageInfo":{"$ref":"#/components/schemas/Paginated"}}}}}}}},"post":{"summary":"Facebook Ads Conversations create","description":"Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.","operationId":"facebook ads conversations-create","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Facebook Ads ConversationsResponse"}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["Facebook Ads Conversations"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/Facebook Ads ConversationsRequest"},{"type":"array","items":{"$ref":"#/components/schemas/Facebook Ads ConversationsRequest"}}]}}}}},"patch":{"summary":"Facebook Ads Conversations update","operationId":"facebook ads conversations-update","description":"Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["Facebook Ads Conversations"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/Facebook Ads ConversationsRequest"},{"type":"array","items":{"$ref":"#/components/schemas/Facebook Ads ConversationsRequest"}}]}}}}},"delete":{"summary":"Facebook Ads Conversations delete","operationId":"facebook ads conversations-delete","responses":{"200":{"description":"OK"}},"tags":["Facebook Ads Conversations"],"description":"Delete a row by using the **primary key** column value.","requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/Facebook Ads ConversationsIdRequest"},{"type":"array","items":{"$ref":"#/components/schemas/Facebook Ads ConversationsIdRequest"}}]}}}}}},"/api/v2/tables/msiu1rgp7qp42o7/records/{recordId}":{"get":{"parameters":[{"schema":{"type":"string"},"name":"recordId","in":"path","required":true,"example":1,"description":"Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."}],"summary":"Facebook Ads Conversations read","description":"Read a row data by using the **primary key** column value.","operationId":"facebook ads conversations-read","tags":["Facebook Ads Conversations"],"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Facebook Ads ConversationsResponse"}}}}}}},"/api/v2/tables/msiu1rgp7qp42o7/records/count":{"parameters":[{"schema":{"type":"string","enum":["vwrrkv0mrygt79ek"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwrrkv0mrygt79ek - Default view","name":"viewId","in":"query","required":false}],"get":{"summary":"Facebook Ads Conversations count","operationId":"facebook ads conversations-count","description":"Get rows count of a table by applying optional filters.","tags":["Facebook Ads Conversations"],"parameters":[{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"count":{"type":"number"}},"required":["list","pageInfo"]},"examples":{"Example 1":{"value":{"count":3}}}}}},"400":{"$ref":"#/components/responses/BadRequest"}}}},"/api/v2/tables/mvouhrgg40oewzi/records":{"get":{"summary":"Chatbot Support Requests list","operationId":"chatbot support requests-db-table-row-list","description":"List of all rows from Chatbot Support Requests table and response data fields can be filtered based on query params.","tags":["Chatbot Support Requests"],"parameters":[{"schema":{"type":"string","enum":["vwc3afrxipfst80s"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwc3afrxipfst80s - Default view","name":"viewId","in":"query","required":false},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."},{"schema":{"type":"string"},"in":"query","name":"sort","description":"Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"},{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"},{"schema":{"type":"number","minimum":1},"in":"query","name":"limit","description":"The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.","example":25},{"schema":{"type":"number","minimum":0,"maximum":1},"in":"query","name":"shuffle","description":"The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.","example":0},{"schema":{"type":"number","minimum":0},"in":"query","name":"offset","description":"The `offset` parameter used for pagination, the value helps to select collection from a certain index.","example":0}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"list":{"type":"array","items":{"$ref":"#/components/schemas/Chatbot Support RequestsResponse"}},"pageInfo":{"$ref":"#/components/schemas/Paginated"}}}}}}}},"post":{"summary":"Chatbot Support Requests create","description":"Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.","operationId":"chatbot support requests-create","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Chatbot Support RequestsResponse"}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["Chatbot Support Requests"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/Chatbot Support RequestsRequest"},{"type":"array","items":{"$ref":"#/components/schemas/Chatbot Support RequestsRequest"}}]}}}}},"patch":{"summary":"Chatbot Support Requests update","operationId":"chatbot support requests-update","description":"Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["Chatbot Support Requests"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/Chatbot Support RequestsRequest"},{"type":"array","items":{"$ref":"#/components/schemas/Chatbot Support RequestsRequest"}}]}}}}},"delete":{"summary":"Chatbot Support Requests delete","operationId":"chatbot support requests-delete","responses":{"200":{"description":"OK"}},"tags":["Chatbot Support Requests"],"description":"Delete a row by using the **primary key** column value.","requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/Chatbot Support RequestsIdRequest"},{"type":"array","items":{"$ref":"#/components/schemas/Chatbot Support RequestsIdRequest"}}]}}}}}},"/api/v2/tables/mvouhrgg40oewzi/records/{recordId}":{"get":{"parameters":[{"schema":{"type":"string"},"name":"recordId","in":"path","required":true,"example":1,"description":"Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."}],"summary":"Chatbot Support Requests read","description":"Read a row data by using the **primary key** column value.","operationId":"chatbot support requests-read","tags":["Chatbot Support Requests"],"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Chatbot Support RequestsResponse"}}}}}}},"/api/v2/tables/mvouhrgg40oewzi/records/count":{"parameters":[{"schema":{"type":"string","enum":["vwc3afrxipfst80s"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwc3afrxipfst80s - Default view","name":"viewId","in":"query","required":false}],"get":{"summary":"Chatbot Support Requests count","operationId":"chatbot support requests-count","description":"Get rows count of a table by applying optional filters.","tags":["Chatbot Support Requests"],"parameters":[{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"count":{"type":"number"}},"required":["list","pageInfo"]},"examples":{"Example 1":{"value":{"count":3}}}}}},"400":{"$ref":"#/components/responses/BadRequest"}}}},"/api/v2/tables/mh3bcslmkkcm9q7/records":{"get":{"summary":"11Labs Voice Agent Testing list","operationId":"11labs voice agent testing-db-table-row-list","description":"List of all rows from 11Labs Voice Agent Testing table and response data fields can be filtered based on query params.","tags":["11Labs Voice Agent Testing"],"parameters":[{"schema":{"type":"string","enum":["vwobv8ubn5wjaf5n"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwobv8ubn5wjaf5n - Default view","name":"viewId","in":"query","required":false},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."},{"schema":{"type":"string"},"in":"query","name":"sort","description":"Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"},{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"},{"schema":{"type":"number","minimum":1},"in":"query","name":"limit","description":"The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.","example":25},{"schema":{"type":"number","minimum":0,"maximum":1},"in":"query","name":"shuffle","description":"The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.","example":0},{"schema":{"type":"number","minimum":0},"in":"query","name":"offset","description":"The `offset` parameter used for pagination, the value helps to select collection from a certain index.","example":0}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"list":{"type":"array","items":{"$ref":"#/components/schemas/11Labs Voice Agent TestingResponse"}},"pageInfo":{"$ref":"#/components/schemas/Paginated"}}}}}}}},"post":{"summary":"11Labs Voice Agent Testing create","description":"Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.","operationId":"11labs voice agent testing-create","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/11Labs Voice Agent TestingResponse"}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["11Labs Voice Agent Testing"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/11Labs Voice Agent TestingRequest"},{"type":"array","items":{"$ref":"#/components/schemas/11Labs Voice Agent TestingRequest"}}]}}}}},"patch":{"summary":"11Labs Voice Agent Testing update","operationId":"11labs voice agent testing-update","description":"Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{}}}},"400":{"$ref":"#/components/responses/BadRequest"}},"tags":["11Labs Voice Agent Testing"],"requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/11Labs Voice Agent TestingRequest"},{"type":"array","items":{"$ref":"#/components/schemas/11Labs Voice Agent TestingRequest"}}]}}}}},"delete":{"summary":"11Labs Voice Agent Testing delete","operationId":"11labs voice agent testing-delete","responses":{"200":{"description":"OK"}},"tags":["11Labs Voice Agent Testing"],"description":"Delete a row by using the **primary key** column value.","requestBody":{"content":{"application/json":{"schema":{"oneOf":[{"$ref":"#/components/schemas/11Labs Voice Agent TestingIdRequest"},{"type":"array","items":{"$ref":"#/components/schemas/11Labs Voice Agent TestingIdRequest"}}]}}}}}},"/api/v2/tables/mh3bcslmkkcm9q7/records/{recordId}":{"get":{"parameters":[{"schema":{"type":"string"},"name":"recordId","in":"path","required":true,"example":1,"description":"Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."},{"schema":{"type":"string"},"in":"query","name":"fields","description":"Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."}],"summary":"11Labs Voice Agent Testing read","description":"Read a row data by using the **primary key** column value.","operationId":"11labs voice agent testing-read","tags":["11Labs Voice Agent Testing"],"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/11Labs Voice Agent TestingResponse"}}}}}}},"/api/v2/tables/mh3bcslmkkcm9q7/records/count":{"parameters":[{"schema":{"type":"string","enum":["vwobv8ubn5wjaf5n"]},"description":"Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwobv8ubn5wjaf5n - Default view","name":"viewId","in":"query","required":false}],"get":{"summary":"11Labs Voice Agent Testing count","operationId":"11labs voice agent testing-count","description":"Get rows count of a table by applying optional filters.","tags":["11Labs Voice Agent Testing"],"parameters":[{"schema":{"type":"string"},"in":"query","name":"where","description":"This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"count":{"type":"number"}},"required":["list","pageInfo"]},"examples":{"Example 1":{"value":{"count":3}}}}}},"400":{"$ref":"#/components/responses/BadRequest"}}}}},"components":{"schemas":{"Paginated":{"title":"Paginated","type":"object","properties":{"pageSize":{"type":"integer"},"totalRows":{"type":"integer"},"isFirstPage":{"type":"boolean"},"isLastPage":{"type":"boolean"},"page":{"type":"number"}}},"Attachment":{"title":"Attachment","type":"object","properties":{"mimetype":{"type":"string"},"size":{"type":"integer"},"title":{"type":"string"},"url":{"type":"string"},"icon":{"type":"string"}}},"Groupby":{"title":"Groupby","type":"object","properties":{"count":{"type":"number","description":"count"},"column_name":{"type":"string","description":"the value of the given column"}}},"Main Data Layer - All AgentsResponse":{"title":"Main Data Layer - All Agents Response","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"},"userId":{"type":"string"},"transcript":{"type":"string"},"s2fId":{"type":"string"},"jobType":{"type":"string"},"zipCode":{"type":"integer"},"timeStamp":{"type":"string"},"rawAvailability":{"type":"object"},"readableAvailability":{"type":"object"},"jobId":{"type":"integer"},"firstName":{"type":"string"},"lastName":{"type":"string"},"phoneNumber":{"type":"string"},"email":{"type":"string","format":"email"},"streetAddress":{"type":"string"},"city":{"type":"string"},"state":{"type":"string"},"appointmentTime":{"type":"string"},"webSession":{"type":"object"},"termsOfService":{"type":"string"},"customerId":{"type":"integer"},"locationId":{"type":"integer"},"transcriptId":{"type":"string"},"DBId":{"type":"integer"},"source":{"type":"string"},"timeZoneMarket":{"type":"integer"},"duration":{"type":"integer"},"credits":{"type":"integer"},"teamNotes":{"type":"string"},"existingCustomer":{"type":"boolean"},"bookable":{"type":"string"},"notBookedReasons":{"type":"string"}}},"Main Data Layer - All AgentsRequest":{"title":"Main Data Layer - All Agents Request","type":"object","description":"","x-internal":false,"properties":{"userId":{"type":"string"},"transcript":{"type":"string"},"s2fId":{"type":"string"},"jobType":{"type":"string"},"zipCode":{"type":"integer"},"timeStamp":{"type":"string"},"rawAvailability":{"type":"object"},"readableAvailability":{"type":"object"},"jobId":{"type":"integer"},"firstName":{"type":"string"},"lastName":{"type":"string"},"phoneNumber":{"type":"string"},"email":{"type":"string","format":"email"},"streetAddress":{"type":"string"},"city":{"type":"string"},"state":{"type":"string"},"appointmentTime":{"type":"string"},"webSession":{"type":"object"},"termsOfService":{"type":"string"},"customerId":{"type":"integer"},"locationId":{"type":"integer"},"transcriptId":{"type":"string"},"DBId":{"type":"integer"},"source":{"type":"string"},"timeZoneMarket":{"type":"integer"},"duration":{"type":"integer"},"credits":{"type":"integer"},"teamNotes":{"type":"string"},"existingCustomer":{"type":"boolean"},"bookable":{"type":"string"},"notBookedReasons":{"type":"string"}}},"Main Data Layer - All AgentsIdRequest":{"title":"Main Data Layer - All Agents Id Request","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"}}},"S2F Demo Agent ConversationsResponse":{"title":"S2F Demo Agent Conversations Response","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"},"userId":{"type":"string"},"transcript":{"type":"string"},"timeStamp":{"type":"string"},"firstName":{"type":"string"},"lastName":{"type":"string"},"phoneNumber":{"type":"string"},"email":{"type":"string","format":"email"},"webSession":{"type":"object"},"transcriptId":{"type":"string"},"DBId":{"type":"integer"},"source":{"type":"string"},"timeZoneMarket":{"type":"integer"},"duration":{"type":"integer"},"credits":{"type":"integer"},"industry":{"type":"string"}}},"S2F Demo Agent ConversationsRequest":{"title":"S2F Demo Agent Conversations Request","type":"object","description":"","x-internal":false,"properties":{"userId":{"type":"string"},"transcript":{"type":"string"},"timeStamp":{"type":"string"},"firstName":{"type":"string"},"lastName":{"type":"string"},"phoneNumber":{"type":"string"},"email":{"type":"string","format":"email"},"webSession":{"type":"object"},"transcriptId":{"type":"string"},"DBId":{"type":"integer"},"source":{"type":"string"},"timeZoneMarket":{"type":"integer"},"duration":{"type":"integer"},"credits":{"type":"integer"},"industry":{"type":"string"}}},"S2F Demo Agent ConversationsIdRequest":{"title":"S2F Demo Agent Conversations Id Request","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"}}},"Facebook Ads ConversationsResponse":{"title":"Facebook Ads Conversations Response","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"},"userId":{"type":"string"},"transcript":{"type":"string"},"s2fId":{"type":"string"},"jobType":{"type":"string"},"zipCode":{"type":"integer"},"timeStamp":{"type":"string"},"rawAvailability":{"type":"object"},"readableAvailability":{"type":"object"},"jobId":{"type":"integer"},"firstName":{"type":"string"},"lastName":{"type":"string"},"phoneNumber":{"type":"string"},"email":{"type":"string","format":"email"},"streetAddress":{"type":"string"},"city":{"type":"string"},"state":{"type":"string"},"appointmentTime":{"type":"string"},"webSession":{"type":"object"},"termsOfService":{"type":"string"},"customerId":{"type":"integer"},"locationId":{"type":"integer"},"transcriptId":{"type":"string"},"DBId":{"type":"integer"},"source":{"type":"string"},"timeZoneMarket":{"type":"integer"},"duration":{"type":"integer"},"credits":{"type":"integer"}}},"Facebook Ads ConversationsRequest":{"title":"Facebook Ads Conversations Request","type":"object","description":"","x-internal":false,"properties":{"userId":{"type":"string"},"transcript":{"type":"string"},"s2fId":{"type":"string"},"jobType":{"type":"string"},"zipCode":{"type":"integer"},"timeStamp":{"type":"string"},"rawAvailability":{"type":"object"},"readableAvailability":{"type":"object"},"jobId":{"type":"integer"},"firstName":{"type":"string"},"lastName":{"type":"string"},"phoneNumber":{"type":"string"},"email":{"type":"string","format":"email"},"streetAddress":{"type":"string"},"city":{"type":"string"},"state":{"type":"string"},"appointmentTime":{"type":"string"},"webSession":{"type":"object"},"termsOfService":{"type":"string"},"customerId":{"type":"integer"},"locationId":{"type":"integer"},"transcriptId":{"type":"string"},"DBId":{"type":"integer"},"source":{"type":"string"},"timeZoneMarket":{"type":"integer"},"duration":{"type":"integer"},"credits":{"type":"integer"}}},"Facebook Ads ConversationsIdRequest":{"title":"Facebook Ads Conversations Id Request","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"}}},"Chatbot Support RequestsResponse":{"title":"Chatbot Support Requests Response","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"},"issue":{"type":"string"},"email":{"type":"string","format":"email"},"timeStamp":{"type":"string"},"name":{"type":"string"},"company":{"type":"string"}}},"Chatbot Support RequestsRequest":{"title":"Chatbot Support Requests Request","type":"object","description":"","x-internal":false,"properties":{"issue":{"type":"string"},"email":{"type":"string","format":"email"},"timeStamp":{"type":"string"},"name":{"type":"string"},"company":{"type":"string"}}},"Chatbot Support RequestsIdRequest":{"title":"Chatbot Support Requests Id Request","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"}}},"11Labs Voice Agent TestingResponse":{"title":"11Labs Voice Agent Testing Response","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"},"userId":{"type":"string"},"transcript":{"type":"string"},"s2fId":{"type":"string"},"jobType":{"type":"string"},"zipCode":{"type":"integer"},"timeStamp":{"type":"string"},"rawAvailability":{"type":"object"},"readableAvailability":{"type":"object"},"jobId":{"type":"integer"},"firstName":{"type":"string"},"lastName":{"type":"string"},"phoneNumber":{"type":"string"},"email":{"type":"string","format":"email"},"streetAddress":{"type":"string"},"city":{"type":"string"},"state":{"type":"string"},"appointmentTime":{"type":"string"},"webSession":{"type":"object"},"termsOfService":{"type":"string"},"customerId":{"type":"integer"},"locationId":{"type":"integer"},"transcriptId":{"type":"string"},"DBId":{"type":"integer"},"source":{"type":"string"},"timeZoneMarket":{"type":"integer"},"duration":{"type":"integer"},"credits":{"type":"integer"},"teamNotes":{"type":"string"},"existingCustomer":{"type":"boolean"},"bookable":{"type":"string"},"notBookedReasons":{"type":"string"}}},"11Labs Voice Agent TestingRequest":{"title":"11Labs Voice Agent Testing Request","type":"object","description":"","x-internal":false,"properties":{"userId":{"type":"string"},"transcript":{"type":"string"},"s2fId":{"type":"string"},"jobType":{"type":"string"},"zipCode":{"type":"integer"},"timeStamp":{"type":"string"},"rawAvailability":{"type":"object"},"readableAvailability":{"type":"object"},"jobId":{"type":"integer"},"firstName":{"type":"string"},"lastName":{"type":"string"},"phoneNumber":{"type":"string"},"email":{"type":"string","format":"email"},"streetAddress":{"type":"string"},"city":{"type":"string"},"state":{"type":"string"},"appointmentTime":{"type":"string"},"webSession":{"type":"object"},"termsOfService":{"type":"string"},"customerId":{"type":"integer"},"locationId":{"type":"integer"},"transcriptId":{"type":"string"},"DBId":{"type":"integer"},"source":{"type":"string"},"timeZoneMarket":{"type":"integer"},"duration":{"type":"integer"},"credits":{"type":"integer"},"teamNotes":{"type":"string"},"existingCustomer":{"type":"boolean"},"bookable":{"type":"string"},"notBookedReasons":{"type":"string"}}},"11Labs Voice Agent TestingIdRequest":{"title":"11Labs Voice Agent Testing Id Request","type":"object","description":"","x-internal":false,"properties":{"Id":{"type":"integer"}}}},"securitySchemes":{"xcToken":{"type":"apiKey","in":"header","name":"xc-token","description":"API token"},"bearerAuth":{"name":"Authorization","type":"http","scheme":"bearer","description":"Bearer token authentication. Use 'Authorization: Bearer <token>' header format. This is an alternative to the xc-token header."}},"responses":{"BadRequest":{"description":"BadRequest","content":{"application/json":{"schema":{"type":"object","properties":{"msg":{"type":"string","x-stoplight":{"id":"p9mk4oi0hbihm"},"example":"BadRequest [Error]: <ERROR MESSAGE>"}},"required":["msg"]},"examples":{"Example 1":{"value":{"msg":"BadRequest [Error]: <ERROR MESSAGE>"}}}}},"headers":{}}}},"security":[{"xcToken":[]},{"bearerAuth":[]}]}
+{
+  "openapi": "3.0.0",
+  "info": { "title": "nocodb", "version": "2.0" },
+  "servers": [
+    { "url": "https://base.s2fleet.dev" },
+    {
+      "url": "{customUrl}",
+      "variables": {
+        "customUrl": {
+          "default": "https://base.s2fleet.dev",
+          "description": "Provide custom nocodb app base url"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/api/v2/tables/mn49049zswgtu0c/records": {
+      "get": {
+        "summary": "Main Data Layer - All Agents list",
+        "operationId": "main data layer - all agents-db-table-row-list",
+        "description": "List of all rows from Main Data Layer - All Agents table and response data fields can be filtered based on query params.",
+        "tags": ["Main Data Layer - All Agents"],
+        "parameters": [
+          {
+            "schema": { "type": "string", "enum": ["vwmsst2prxf672cd"] },
+            "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwmsst2prxf672cd - Default view",
+            "name": "viewId",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "sort",
+            "description": "Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          },
+          {
+            "schema": { "type": "number", "minimum": 1 },
+            "in": "query",
+            "name": "limit",
+            "description": "The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.",
+            "example": 25
+          },
+          {
+            "schema": { "type": "number", "minimum": 0, "maximum": 1 },
+            "in": "query",
+            "name": "shuffle",
+            "description": "The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.",
+            "example": 0
+          },
+          {
+            "schema": { "type": "number", "minimum": 0 },
+            "in": "query",
+            "name": "offset",
+            "description": "The `offset` parameter used for pagination, the value helps to select collection from a certain index.",
+            "example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Main Data Layer - All AgentsResponse"
+                      }
+                    },
+                    "pageInfo": { "$ref": "#/components/schemas/Paginated" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Main Data Layer - All Agents create",
+        "description": "Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.",
+        "operationId": "main data layer - all agents-create",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Main Data Layer - All AgentsResponse"
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["Main Data Layer - All Agents"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Main Data Layer - All AgentsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Main Data Layer - All AgentsRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Main Data Layer - All Agents update",
+        "operationId": "main data layer - all agents-update",
+        "description": "Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["Main Data Layer - All Agents"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Main Data Layer - All AgentsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Main Data Layer - All AgentsRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Main Data Layer - All Agents delete",
+        "operationId": "main data layer - all agents-delete",
+        "responses": { "200": { "description": "OK" } },
+        "tags": ["Main Data Layer - All Agents"],
+        "description": "Delete a row by using the **primary key** column value.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Main Data Layer - All AgentsIdRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Main Data Layer - All AgentsIdRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/mn49049zswgtu0c/records/{recordId}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "example": 1,
+            "description": "Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          }
+        ],
+        "summary": "Main Data Layer - All Agents read",
+        "description": "Read a row data by using the **primary key** column value.",
+        "operationId": "main data layer - all agents-read",
+        "tags": ["Main Data Layer - All Agents"],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Main Data Layer - All AgentsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/mn49049zswgtu0c/records/count": {
+      "parameters": [
+        {
+          "schema": { "type": "string", "enum": ["vwmsst2prxf672cd"] },
+          "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwmsst2prxf672cd - Default view",
+          "name": "viewId",
+          "in": "query",
+          "required": false
+        }
+      ],
+      "get": {
+        "summary": "Main Data Layer - All Agents count",
+        "operationId": "main data layer - all agents-count",
+        "description": "Get rows count of a table by applying optional filters.",
+        "tags": ["Main Data Layer - All Agents"],
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "count": { "type": "number" } },
+                  "required": ["list", "pageInfo"]
+                },
+                "examples": { "Example 1": { "value": { "count": 3 } } }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        }
+      }
+    },
+    "/api/v2/tables/m0ssac78idb3v5k/records": {
+      "get": {
+        "summary": "S2F Demo Agent Conversations list",
+        "operationId": "s2f demo agent conversations-db-table-row-list",
+        "description": "List of all rows from S2F Demo Agent Conversations table and response data fields can be filtered based on query params.",
+        "tags": ["S2F Demo Agent Conversations"],
+        "parameters": [
+          {
+            "schema": { "type": "string", "enum": ["vwzzj9530y05wjub"] },
+            "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwzzj9530y05wjub - Default view",
+            "name": "viewId",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "sort",
+            "description": "Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          },
+          {
+            "schema": { "type": "number", "minimum": 1 },
+            "in": "query",
+            "name": "limit",
+            "description": "The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.",
+            "example": 25
+          },
+          {
+            "schema": { "type": "number", "minimum": 0, "maximum": 1 },
+            "in": "query",
+            "name": "shuffle",
+            "description": "The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.",
+            "example": 0
+          },
+          {
+            "schema": { "type": "number", "minimum": 0 },
+            "in": "query",
+            "name": "offset",
+            "description": "The `offset` parameter used for pagination, the value helps to select collection from a certain index.",
+            "example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/S2F Demo Agent ConversationsResponse"
+                      }
+                    },
+                    "pageInfo": { "$ref": "#/components/schemas/Paginated" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "S2F Demo Agent Conversations create",
+        "description": "Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.",
+        "operationId": "s2f demo agent conversations-create",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/S2F Demo Agent ConversationsResponse"
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["S2F Demo Agent Conversations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/S2F Demo Agent ConversationsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/S2F Demo Agent ConversationsRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "S2F Demo Agent Conversations update",
+        "operationId": "s2f demo agent conversations-update",
+        "description": "Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["S2F Demo Agent Conversations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/S2F Demo Agent ConversationsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/S2F Demo Agent ConversationsRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "S2F Demo Agent Conversations delete",
+        "operationId": "s2f demo agent conversations-delete",
+        "responses": { "200": { "description": "OK" } },
+        "tags": ["S2F Demo Agent Conversations"],
+        "description": "Delete a row by using the **primary key** column value.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/S2F Demo Agent ConversationsIdRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/S2F Demo Agent ConversationsIdRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/m0ssac78idb3v5k/records/{recordId}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "example": 1,
+            "description": "Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          }
+        ],
+        "summary": "S2F Demo Agent Conversations read",
+        "description": "Read a row data by using the **primary key** column value.",
+        "operationId": "s2f demo agent conversations-read",
+        "tags": ["S2F Demo Agent Conversations"],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/S2F Demo Agent ConversationsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/m0ssac78idb3v5k/records/count": {
+      "parameters": [
+        {
+          "schema": { "type": "string", "enum": ["vwzzj9530y05wjub"] },
+          "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwzzj9530y05wjub - Default view",
+          "name": "viewId",
+          "in": "query",
+          "required": false
+        }
+      ],
+      "get": {
+        "summary": "S2F Demo Agent Conversations count",
+        "operationId": "s2f demo agent conversations-count",
+        "description": "Get rows count of a table by applying optional filters.",
+        "tags": ["S2F Demo Agent Conversations"],
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "count": { "type": "number" } },
+                  "required": ["list", "pageInfo"]
+                },
+                "examples": { "Example 1": { "value": { "count": 3 } } }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        }
+      }
+    },
+    "/api/v2/tables/msiu1rgp7qp42o7/records": {
+      "get": {
+        "summary": "Facebook Ads Conversations list",
+        "operationId": "facebook ads conversations-db-table-row-list",
+        "description": "List of all rows from Facebook Ads Conversations table and response data fields can be filtered based on query params.",
+        "tags": ["Facebook Ads Conversations"],
+        "parameters": [
+          {
+            "schema": { "type": "string", "enum": ["vwrrkv0mrygt79ek"] },
+            "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwrrkv0mrygt79ek - Default view",
+            "name": "viewId",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "sort",
+            "description": "Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          },
+          {
+            "schema": { "type": "number", "minimum": 1 },
+            "in": "query",
+            "name": "limit",
+            "description": "The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.",
+            "example": 25
+          },
+          {
+            "schema": { "type": "number", "minimum": 0, "maximum": 1 },
+            "in": "query",
+            "name": "shuffle",
+            "description": "The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.",
+            "example": 0
+          },
+          {
+            "schema": { "type": "number", "minimum": 0 },
+            "in": "query",
+            "name": "offset",
+            "description": "The `offset` parameter used for pagination, the value helps to select collection from a certain index.",
+            "example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Facebook Ads ConversationsResponse"
+                      }
+                    },
+                    "pageInfo": { "$ref": "#/components/schemas/Paginated" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Facebook Ads Conversations create",
+        "description": "Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.",
+        "operationId": "facebook ads conversations-create",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facebook Ads ConversationsResponse"
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["Facebook Ads Conversations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Facebook Ads ConversationsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Facebook Ads ConversationsRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Facebook Ads Conversations update",
+        "operationId": "facebook ads conversations-update",
+        "description": "Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["Facebook Ads Conversations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Facebook Ads ConversationsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Facebook Ads ConversationsRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Facebook Ads Conversations delete",
+        "operationId": "facebook ads conversations-delete",
+        "responses": { "200": { "description": "OK" } },
+        "tags": ["Facebook Ads Conversations"],
+        "description": "Delete a row by using the **primary key** column value.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Facebook Ads ConversationsIdRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Facebook Ads ConversationsIdRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/msiu1rgp7qp42o7/records/{recordId}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "example": 1,
+            "description": "Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          }
+        ],
+        "summary": "Facebook Ads Conversations read",
+        "description": "Read a row data by using the **primary key** column value.",
+        "operationId": "facebook ads conversations-read",
+        "tags": ["Facebook Ads Conversations"],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facebook Ads ConversationsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/msiu1rgp7qp42o7/records/count": {
+      "parameters": [
+        {
+          "schema": { "type": "string", "enum": ["vwrrkv0mrygt79ek"] },
+          "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwrrkv0mrygt79ek - Default view",
+          "name": "viewId",
+          "in": "query",
+          "required": false
+        }
+      ],
+      "get": {
+        "summary": "Facebook Ads Conversations count",
+        "operationId": "facebook ads conversations-count",
+        "description": "Get rows count of a table by applying optional filters.",
+        "tags": ["Facebook Ads Conversations"],
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "count": { "type": "number" } },
+                  "required": ["list", "pageInfo"]
+                },
+                "examples": { "Example 1": { "value": { "count": 3 } } }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        }
+      }
+    },
+    "/api/v2/tables/mvouhrgg40oewzi/records": {
+      "get": {
+        "summary": "Chatbot Support Requests list",
+        "operationId": "chatbot support requests-db-table-row-list",
+        "description": "List of all rows from Chatbot Support Requests table and response data fields can be filtered based on query params.",
+        "tags": ["Chatbot Support Requests"],
+        "parameters": [
+          {
+            "schema": { "type": "string", "enum": ["vwc3afrxipfst80s"] },
+            "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwc3afrxipfst80s - Default view",
+            "name": "viewId",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "sort",
+            "description": "Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          },
+          {
+            "schema": { "type": "number", "minimum": 1 },
+            "in": "query",
+            "name": "limit",
+            "description": "The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.",
+            "example": 25
+          },
+          {
+            "schema": { "type": "number", "minimum": 0, "maximum": 1 },
+            "in": "query",
+            "name": "shuffle",
+            "description": "The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.",
+            "example": 0
+          },
+          {
+            "schema": { "type": "number", "minimum": 0 },
+            "in": "query",
+            "name": "offset",
+            "description": "The `offset` parameter used for pagination, the value helps to select collection from a certain index.",
+            "example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Chatbot Support RequestsResponse"
+                      }
+                    },
+                    "pageInfo": { "$ref": "#/components/schemas/Paginated" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Chatbot Support Requests create",
+        "description": "Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.",
+        "operationId": "chatbot support requests-create",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Chatbot Support RequestsResponse"
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["Chatbot Support Requests"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Chatbot Support RequestsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Chatbot Support RequestsRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Chatbot Support Requests update",
+        "operationId": "chatbot support requests-update",
+        "description": "Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["Chatbot Support Requests"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Chatbot Support RequestsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Chatbot Support RequestsRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Chatbot Support Requests delete",
+        "operationId": "chatbot support requests-delete",
+        "responses": { "200": { "description": "OK" } },
+        "tags": ["Chatbot Support Requests"],
+        "description": "Delete a row by using the **primary key** column value.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Chatbot Support RequestsIdRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Chatbot Support RequestsIdRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/mvouhrgg40oewzi/records/{recordId}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "example": 1,
+            "description": "Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          }
+        ],
+        "summary": "Chatbot Support Requests read",
+        "description": "Read a row data by using the **primary key** column value.",
+        "operationId": "chatbot support requests-read",
+        "tags": ["Chatbot Support Requests"],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Chatbot Support RequestsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/mvouhrgg40oewzi/records/count": {
+      "parameters": [
+        {
+          "schema": { "type": "string", "enum": ["vwc3afrxipfst80s"] },
+          "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwc3afrxipfst80s - Default view",
+          "name": "viewId",
+          "in": "query",
+          "required": false
+        }
+      ],
+      "get": {
+        "summary": "Chatbot Support Requests count",
+        "operationId": "chatbot support requests-count",
+        "description": "Get rows count of a table by applying optional filters.",
+        "tags": ["Chatbot Support Requests"],
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "count": { "type": "number" } },
+                  "required": ["list", "pageInfo"]
+                },
+                "examples": { "Example 1": { "value": { "count": 3 } } }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        }
+      }
+    },
+    "/api/v2/tables/mh3bcslmkkcm9q7/records": {
+      "get": {
+        "summary": "11Labs Voice Agent Testing list",
+        "operationId": "11labs voice agent testing-db-table-row-list",
+        "description": "List of all rows from 11Labs Voice Agent Testing table and response data fields can be filtered based on query params.",
+        "tags": ["11Labs Voice Agent Testing"],
+        "parameters": [
+          {
+            "schema": { "type": "string", "enum": ["vwobv8ubn5wjaf5n"] },
+            "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwobv8ubn5wjaf5n - Default view",
+            "name": "viewId",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "sort",
+            "description": "Comma separated field names to sort rows, rows will sort in ascending order based on provided columns. To sort in descending order provide `-` prefix along with column name, like `-field`. Example : `sort=field1,-field2`"
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          },
+          {
+            "schema": { "type": "number", "minimum": 1 },
+            "in": "query",
+            "name": "limit",
+            "description": "The `limit` parameter used for pagination, the response collection size depends on limit value with default value `25` and maximum value `1000`, which can be overridden by environment variables `DB_QUERY_LIMIT_DEFAULT` and `DB_QUERY_LIMIT_MAX` respectively.",
+            "example": 25
+          },
+          {
+            "schema": { "type": "number", "minimum": 0, "maximum": 1 },
+            "in": "query",
+            "name": "shuffle",
+            "description": "The `shuffle` parameter used for pagination, the response will be shuffled if it is set to 1.",
+            "example": 0
+          },
+          {
+            "schema": { "type": "number", "minimum": 0 },
+            "in": "query",
+            "name": "offset",
+            "description": "The `offset` parameter used for pagination, the value helps to select collection from a certain index.",
+            "example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/11Labs Voice Agent TestingResponse"
+                      }
+                    },
+                    "pageInfo": { "$ref": "#/components/schemas/Paginated" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "11Labs Voice Agent Testing create",
+        "description": "Insert a new row in table by providing a key value pair object where key refers to the column alias. All the required fields should be included with payload excluding `autoincrement` and column with default value.",
+        "operationId": "11labs voice agent testing-create",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/11Labs Voice Agent TestingResponse"
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["11Labs Voice Agent Testing"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/11Labs Voice Agent TestingRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/11Labs Voice Agent TestingRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "11Labs Voice Agent Testing update",
+        "operationId": "11labs voice agent testing-update",
+        "description": "Partial update row in table by providing a key value pair object where key refers to the column alias. You need to only include columns which you want to update.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        },
+        "tags": ["11Labs Voice Agent Testing"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/11Labs Voice Agent TestingRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/11Labs Voice Agent TestingRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "11Labs Voice Agent Testing delete",
+        "operationId": "11labs voice agent testing-delete",
+        "responses": { "200": { "description": "OK" } },
+        "tags": ["11Labs Voice Agent Testing"],
+        "description": "Delete a row by using the **primary key** column value.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/11Labs Voice Agent TestingIdRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/11Labs Voice Agent TestingIdRequest"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/mh3bcslmkkcm9q7/records/{recordId}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "example": 1,
+            "description": "Primary key of the record you want to read. If the table have composite primary key then combine them by using `___` and pass it as primary key."
+          },
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "fields",
+            "description": "Array of field names or comma separated filed names to include in the response objects. In array syntax pass it like `fields[]=field1&fields[]=field2` or alternately `fields=field1,field2`."
+          }
+        ],
+        "summary": "11Labs Voice Agent Testing read",
+        "description": "Read a row data by using the **primary key** column value.",
+        "operationId": "11labs voice agent testing-read",
+        "tags": ["11Labs Voice Agent Testing"],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/11Labs Voice Agent TestingResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/tables/mh3bcslmkkcm9q7/records/count": {
+      "parameters": [
+        {
+          "schema": { "type": "string", "enum": ["vwobv8ubn5wjaf5n"] },
+          "description": "Allows you to fetch records that are currently visible within a specific view.\n\nViews:\n* vwobv8ubn5wjaf5n - Default view",
+          "name": "viewId",
+          "in": "query",
+          "required": false
+        }
+      ],
+      "get": {
+        "summary": "11Labs Voice Agent Testing count",
+        "operationId": "11labs voice agent testing-count",
+        "description": "Get rows count of a table by applying optional filters.",
+        "tags": ["11Labs Voice Agent Testing"],
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "where",
+            "description": "This can be used for filtering rows, which accepts complicated where conditions. For more info visit [here](https://docs.nocodb.com/developer-resources/rest-apis#comparison-operators). Example : `where=(field1,eq,value)`"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "count": { "type": "number" } },
+                  "required": ["list", "pageInfo"]
+                },
+                "examples": { "Example 1": { "value": { "count": 3 } } }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Paginated": {
+        "title": "Paginated",
+        "type": "object",
+        "properties": {
+          "pageSize": { "type": "integer" },
+          "totalRows": { "type": "integer" },
+          "isFirstPage": { "type": "boolean" },
+          "isLastPage": { "type": "boolean" },
+          "page": { "type": "number" }
+        }
+      },
+      "Attachment": {
+        "title": "Attachment",
+        "type": "object",
+        "properties": {
+          "mimetype": { "type": "string" },
+          "size": { "type": "integer" },
+          "title": { "type": "string" },
+          "url": { "type": "string" },
+          "icon": { "type": "string" }
+        }
+      },
+      "Groupby": {
+        "title": "Groupby",
+        "type": "object",
+        "properties": {
+          "count": { "type": "number", "description": "count" },
+          "column_name": {
+            "type": "string",
+            "description": "the value of the given column"
+          }
+        }
+      },
+      "Main Data Layer - All AgentsResponse": {
+        "title": "Main Data Layer - All Agents Response",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "Id": { "type": "integer" },
+          "userId": { "type": "string" },
+          "transcript": { "type": "string" },
+          "s2fId": { "type": "string" },
+          "jobType": { "type": "string" },
+          "zipCode": { "type": "integer" },
+          "timeStamp": { "type": "string" },
+          "rawAvailability": { "type": "object" },
+          "readableAvailability": { "type": "object" },
+          "jobId": { "type": "integer" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phoneNumber": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "streetAddress": { "type": "string" },
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "appointmentTime": { "type": "string" },
+          "webSession": { "type": "object" },
+          "termsOfService": { "type": "string" },
+          "customerId": { "type": "integer" },
+          "locationId": { "type": "integer" },
+          "transcriptId": { "type": "string" },
+          "DBId": { "type": "integer" },
+          "source": { "type": "string" },
+          "timeZoneMarket": { "type": "integer" },
+          "duration": { "type": "integer" },
+          "credits": { "type": "integer" },
+          "teamNotes": { "type": "string" },
+          "existingCustomer": { "type": "boolean" },
+          "bookable": { "type": "string" },
+          "notBookedReasons": { "type": "string" }
+        }
+      },
+      "Main Data Layer - All AgentsRequest": {
+        "title": "Main Data Layer - All Agents Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "userId": { "type": "string" },
+          "transcript": { "type": "string" },
+          "s2fId": { "type": "string" },
+          "jobType": { "type": "string" },
+          "zipCode": { "type": "integer" },
+          "timeStamp": { "type": "string" },
+          "rawAvailability": { "type": "object" },
+          "readableAvailability": { "type": "object" },
+          "jobId": { "type": "integer" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phoneNumber": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "streetAddress": { "type": "string" },
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "appointmentTime": { "type": "string" },
+          "webSession": { "type": "object" },
+          "termsOfService": { "type": "string" },
+          "customerId": { "type": "integer" },
+          "locationId": { "type": "integer" },
+          "transcriptId": { "type": "string" },
+          "DBId": { "type": "integer" },
+          "source": { "type": "string" },
+          "timeZoneMarket": { "type": "integer" },
+          "duration": { "type": "integer" },
+          "credits": { "type": "integer" },
+          "teamNotes": { "type": "string" },
+          "existingCustomer": { "type": "boolean" },
+          "bookable": { "type": "string" },
+          "notBookedReasons": { "type": "string" }
+        }
+      },
+      "Main Data Layer - All AgentsIdRequest": {
+        "title": "Main Data Layer - All Agents Id Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": { "Id": { "type": "integer" } }
+      },
+      "S2F Demo Agent ConversationsResponse": {
+        "title": "S2F Demo Agent Conversations Response",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "Id": { "type": "integer" },
+          "userId": { "type": "string" },
+          "transcript": { "type": "string" },
+          "timeStamp": { "type": "string" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phoneNumber": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "webSession": { "type": "object" },
+          "transcriptId": { "type": "string" },
+          "DBId": { "type": "integer" },
+          "source": { "type": "string" },
+          "timeZoneMarket": { "type": "integer" },
+          "duration": { "type": "integer" },
+          "credits": { "type": "integer" },
+          "industry": { "type": "string" }
+        }
+      },
+      "S2F Demo Agent ConversationsRequest": {
+        "title": "S2F Demo Agent Conversations Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "userId": { "type": "string" },
+          "transcript": { "type": "string" },
+          "timeStamp": { "type": "string" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phoneNumber": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "webSession": { "type": "object" },
+          "transcriptId": { "type": "string" },
+          "DBId": { "type": "integer" },
+          "source": { "type": "string" },
+          "timeZoneMarket": { "type": "integer" },
+          "duration": { "type": "integer" },
+          "credits": { "type": "integer" },
+          "industry": { "type": "string" }
+        }
+      },
+      "S2F Demo Agent ConversationsIdRequest": {
+        "title": "S2F Demo Agent Conversations Id Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": { "Id": { "type": "integer" } }
+      },
+      "Facebook Ads ConversationsResponse": {
+        "title": "Facebook Ads Conversations Response",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "Id": { "type": "integer" },
+          "userId": { "type": "string" },
+          "transcript": { "type": "string" },
+          "s2fId": { "type": "string" },
+          "jobType": { "type": "string" },
+          "zipCode": { "type": "integer" },
+          "timeStamp": { "type": "string" },
+          "rawAvailability": { "type": "object" },
+          "readableAvailability": { "type": "object" },
+          "jobId": { "type": "integer" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phoneNumber": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "streetAddress": { "type": "string" },
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "appointmentTime": { "type": "string" },
+          "webSession": { "type": "object" },
+          "termsOfService": { "type": "string" },
+          "customerId": { "type": "integer" },
+          "locationId": { "type": "integer" },
+          "transcriptId": { "type": "string" },
+          "DBId": { "type": "integer" },
+          "source": { "type": "string" },
+          "timeZoneMarket": { "type": "integer" },
+          "duration": { "type": "integer" },
+          "credits": { "type": "integer" }
+        }
+      },
+      "Facebook Ads ConversationsRequest": {
+        "title": "Facebook Ads Conversations Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "userId": { "type": "string" },
+          "transcript": { "type": "string" },
+          "s2fId": { "type": "string" },
+          "jobType": { "type": "string" },
+          "zipCode": { "type": "integer" },
+          "timeStamp": { "type": "string" },
+          "rawAvailability": { "type": "object" },
+          "readableAvailability": { "type": "object" },
+          "jobId": { "type": "integer" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phoneNumber": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "streetAddress": { "type": "string" },
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "appointmentTime": { "type": "string" },
+          "webSession": { "type": "object" },
+          "termsOfService": { "type": "string" },
+          "customerId": { "type": "integer" },
+          "locationId": { "type": "integer" },
+          "transcriptId": { "type": "string" },
+          "DBId": { "type": "integer" },
+          "source": { "type": "string" },
+          "timeZoneMarket": { "type": "integer" },
+          "duration": { "type": "integer" },
+          "credits": { "type": "integer" }
+        }
+      },
+      "Facebook Ads ConversationsIdRequest": {
+        "title": "Facebook Ads Conversations Id Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": { "Id": { "type": "integer" } }
+      },
+      "Chatbot Support RequestsResponse": {
+        "title": "Chatbot Support Requests Response",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "Id": { "type": "integer" },
+          "issue": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "timeStamp": { "type": "string" },
+          "name": { "type": "string" },
+          "company": { "type": "string" }
+        }
+      },
+      "Chatbot Support RequestsRequest": {
+        "title": "Chatbot Support Requests Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "issue": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "timeStamp": { "type": "string" },
+          "name": { "type": "string" },
+          "company": { "type": "string" }
+        }
+      },
+      "Chatbot Support RequestsIdRequest": {
+        "title": "Chatbot Support Requests Id Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": { "Id": { "type": "integer" } }
+      },
+      "11Labs Voice Agent TestingResponse": {
+        "title": "11Labs Voice Agent Testing Response",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "Id": { "type": "integer" },
+          "userId": { "type": "string" },
+          "transcript": { "type": "string" },
+          "s2fId": { "type": "string" },
+          "jobType": { "type": "string" },
+          "zipCode": { "type": "integer" },
+          "timeStamp": { "type": "string" },
+          "rawAvailability": { "type": "object" },
+          "readableAvailability": { "type": "object" },
+          "jobId": { "type": "integer" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phoneNumber": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "streetAddress": { "type": "string" },
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "appointmentTime": { "type": "string" },
+          "webSession": { "type": "object" },
+          "termsOfService": { "type": "string" },
+          "customerId": { "type": "integer" },
+          "locationId": { "type": "integer" },
+          "transcriptId": { "type": "string" },
+          "DBId": { "type": "integer" },
+          "source": { "type": "string" },
+          "timeZoneMarket": { "type": "integer" },
+          "duration": { "type": "integer" },
+          "credits": { "type": "integer" },
+          "teamNotes": { "type": "string" },
+          "existingCustomer": { "type": "boolean" },
+          "bookable": { "type": "string" },
+          "notBookedReasons": { "type": "string" }
+        }
+      },
+      "11Labs Voice Agent TestingRequest": {
+        "title": "11Labs Voice Agent Testing Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": {
+          "userId": { "type": "string" },
+          "transcript": { "type": "string" },
+          "s2fId": { "type": "string" },
+          "jobType": { "type": "string" },
+          "zipCode": { "type": "integer" },
+          "timeStamp": { "type": "string" },
+          "rawAvailability": { "type": "object" },
+          "readableAvailability": { "type": "object" },
+          "jobId": { "type": "integer" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phoneNumber": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "streetAddress": { "type": "string" },
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "appointmentTime": { "type": "string" },
+          "webSession": { "type": "object" },
+          "termsOfService": { "type": "string" },
+          "customerId": { "type": "integer" },
+          "locationId": { "type": "integer" },
+          "transcriptId": { "type": "string" },
+          "DBId": { "type": "integer" },
+          "source": { "type": "string" },
+          "timeZoneMarket": { "type": "integer" },
+          "duration": { "type": "integer" },
+          "credits": { "type": "integer" },
+          "teamNotes": { "type": "string" },
+          "existingCustomer": { "type": "boolean" },
+          "bookable": { "type": "string" },
+          "notBookedReasons": { "type": "string" }
+        }
+      },
+      "11Labs Voice Agent TestingIdRequest": {
+        "title": "11Labs Voice Agent Testing Id Request",
+        "type": "object",
+        "description": "",
+        "x-internal": false,
+        "properties": { "Id": { "type": "integer" } }
+      }
+    },
+    "securitySchemes": {
+      "xcToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "xc-token",
+        "description": "API token"
+      },
+      "bearerAuth": {
+        "name": "Authorization",
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer token authentication. Use 'Authorization: Bearer <token>' header format. This is an alternative to the xc-token header."
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "BadRequest",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "x-stoplight": { "id": "p9mk4oi0hbihm" },
+                  "example": "BadRequest [Error]: <ERROR MESSAGE>"
+                }
+              },
+              "required": ["msg"]
+            },
+            "examples": {
+              "Example 1": {
+                "value": { "msg": "BadRequest [Error]: <ERROR MESSAGE>" }
+              }
+            }
+          }
+        },
+        "headers": {}
+      }
+    }
+  },
+  "security": [{ "xcToken": [] }, { "bearerAuth": [] }]
+}

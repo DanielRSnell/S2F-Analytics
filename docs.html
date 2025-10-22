@@ -1,668 +1,741 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S2F Analytics Dashboard - Documentation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        /* Color Palette - Dark Teal Theme */
+        --color-background: #060d0e;
+        --color-background-secondary: #0d1819;
+        --color-card: #111f20;
+        --color-card-hover: #1a3537;
+        --color-surface: #1e293b;
+        --color-surface-light: #334155;
+
+        /* Accent Colors */
+        --color-primary: #3fb4b8;
+        --color-primary-dark: #2d8a8d;
+        --color-accent: #5ac8cd;
+        --color-accent-light: #7dd7db;
+
+        /* Text Colors */
+        --color-text-primary: #e8f5f5;
+        --color-text-secondary: #b0d4d5;
+        --color-text-muted: #6b9a9b;
+
+        /* Border & Divider */
+        --color-border: #2d4f51;
+        --color-divider: #264042;
+
+        /* Status Colors */
+        --color-success: #4ade80;
+        --color-error: #f87171;
+        --color-warning: #fbbf24;
+        --color-info: #60a5fa;
+        --color-code-bg: #0f1419;
+
+        /* Typography */
+        --font-family-base:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        --font-family-mono:
+          "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 1rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 2rem;
+
+        --font-weight-normal: 400;
+        --font-weight-medium: 500;
+        --font-weight-semibold: 600;
+        --font-weight-bold: 700;
+
+        /* Spacing */
+        --spacing-1: 0.25rem;
+        --spacing-2: 0.5rem;
+        --spacing-3: 0.75rem;
+        --spacing-4: 1rem;
+        --spacing-5: 1.25rem;
+        --spacing-6: 1.5rem;
+        --spacing-8: 2rem;
+        --spacing-10: 2.5rem;
+        --spacing-12: 3rem;
+
+        /* Border Radius */
+        --radius-sm: 0.375rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md:
+          0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg:
+          0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+        --shadow-xl:
+          0 20px 25px -5px rgba(0, 0, 0, 0.6),
+          0 10px 10px -5px rgba(0, 0, 0, 0.4);
+
+        /* Transitions */
+        --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      body {
+        font-family: var(--font-family-base);
+        background: var(--color-background);
+        color: var(--color-text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 60px;
+        padding-bottom: 40px;
+        border-bottom: 2px solid var(--color-border);
+      }
+
+      .logo {
+        font-size: 48px;
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-accent) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+      }
+
+      .tagline {
+        font-size: 20px;
+        color: var(--color-text-secondary);
+        margin-bottom: 20px;
+      }
+
+      .badges {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-2);
+        padding: var(--spacing-2) var(--spacing-4);
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        border-radius: 20px;
+        font-size: var(--font-size-sm);
+        color: var(--color-text-secondary);
+      }
+
+      .badge i {
+        color: var(--color-primary);
+      }
+
+      .section {
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        padding: 40px;
+        margin-bottom: 40px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .section-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--color-text-primary);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .section-title i {
+        color: var(--color-primary);
+        font-size: 32px;
+      }
+
+      .section-description {
+        font-size: 16px;
+        color: var(--color-text-secondary);
+        margin-bottom: 30px;
+        line-height: 1.8;
+      }
+
+      .code-block {
+        background: var(--color-code-bg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        padding: var(--spacing-6);
+        margin: var(--spacing-5) 0;
+        position: relative;
+        overflow-x: auto;
+      }
+
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .code-language {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        letter-spacing: 0.05em;
+      }
+
+      .copy-btn {
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        color: var(--color-text-secondary);
+        padding: var(--spacing-2) var(--spacing-4);
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        font-size: var(--font-size-xs);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-2);
+        transition: var(--transition-fast);
+      }
+
+      .copy-btn:hover {
+        background: var(--color-card-hover);
+        color: var(--color-text-primary);
+        border-color: var(--color-primary);
+      }
+
+      .copy-btn.copied {
+        background: var(--color-success);
+        border-color: var(--color-success);
+        color: white;
+      }
+
+      pre {
+        margin: 0;
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-sm);
+        line-height: 1.6;
+        color: var(--color-text-primary);
+      }
+
+      code {
+        font-family: inherit;
+      }
+
+      /* Override highlight.js to match our theme */
+      .hljs {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+
+      .inline-code {
+        background: var(--color-code-bg);
+        color: var(--color-primary);
+        padding: var(--spacing-1) var(--spacing-3);
+        border-radius: var(--radius-sm);
+        font-size: var(--font-size-sm);
+        font-family: var(--font-family-mono);
+      }
+
+      .attribute-list {
+        list-style: none;
+        margin: 20px 0;
+      }
+
+      .attribute-item {
+        background: var(--color-card-hover);
+        border-left: 3px solid var(--color-primary);
+        padding: var(--spacing-4) var(--spacing-5);
+        margin-bottom: var(--spacing-3);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-border);
+      }
+
+      .attribute-name {
+        font-weight: 700;
+        color: var(--color-primary);
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      .attribute-type {
+        display: inline-block;
+        background: var(--color-code-bg);
+        color: var(--color-accent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: monospace;
+        margin-left: 8px;
+      }
+
+      .attribute-desc {
+        color: var(--color-text-secondary);
+        font-size: 14px;
+        margin-top: 8px;
+      }
+
+      .step-list {
+        counter-reset: step-counter;
+        list-style: none;
+        margin: 20px 0;
+      }
+
+      .step-item {
+        counter-increment: step-counter;
+        padding-left: 60px;
+        position: relative;
+        margin-bottom: 24px;
+      }
+
+      .step-item::before {
+        content: counter(step-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-accent) 100%
+        );
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .note {
+        background: var(--color-card-hover);
+        border-left: 4px solid var(--color-primary);
+        padding: var(--spacing-4) var(--spacing-5);
+        border-radius: var(--radius-lg);
+        margin: var(--spacing-5) 0;
+      }
+
+      .note-title {
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .note-content {
+        color: var(--color-text-secondary);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .demo-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-accent) 100%
+        );
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        margin-top: 20px;
+      }
+
+      .demo-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(63, 180, 184, 0.4);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 20px 10px;
+        }
+
+        .section {
+          padding: 24px 20px;
+        }
+
+        .logo {
+          font-size: 36px;
+        }
+
+        .tagline {
+          font-size: 16px;
+        }
+
+        .section-title {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">S2F Analytics Dashboard</div>
+        <div class="tagline">
+          High-fidelity analytics web component for chat and booking insights
+        </div>
+        <div class="badges">
+          <span class="badge"><i class="ri-html5-fill"></i> Web Component</span>
+          <span class="badge"
+            ><i class="ri-javascript-fill"></i> TypeScript</span
+          >
+          <span class="badge"><i class="ri-table-fill"></i> AG Grid</span>
+          <span class="badge"
+            ><i class="ri-pie-chart-2-fill"></i> Analytics</span
+          >
+        </div>
+      </div>
+
+      <!-- Quick Start Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="ri-rocket-fill"></i>
+          Quick Start
+        </h2>
+        <p class="section-description">
+          Add the S2F Analytics Dashboard to any website with just 2 lines of
+          code. No configuration needed - all CSS and dependencies are
+          automatically loaded!
+        </p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-language">HTML</span>
+            <button class="copy-btn" onclick="copyCode(this, 'quick-start')">
+              <i class="ri-file-copy-line"></i> Copy
+            </button>
+          </div>
+          <pre
+            id="quick-start"
+          ><code class="language-xml"><!-- Add this script tag -->
+<script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"></script>
+
+<!-- Add the component -->
+<s2f-analytics-dashboard s2fid="pd-northern-nj"></s2f-analytics-dashboard></code></pre>
+        </div>
+
+        <p
+          style="
+            margin-top: 20px;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+          "
+        >
+          ✨ <strong>That's it!</strong> The component automatically loads all
+          required CSS and JavaScript dependencies (Remix Icons, AG Grid, custom
+          styles).
+        </p>
+
+        <div class="note">
+          <div class="note-title">
+            <i class="ri-information-fill"></i>
+            Important: Non-Encapsulated Component
+          </div>
+          <div class="note-content">
+            This web component is <strong>not encapsulated</strong> - it does
+            not use Shadow DOM. This means:
+            <ul style="margin-top: 8px; padding-left: 20px">
+              <li>
+                Styles are automatically injected into the page when the script
+                loads
+              </li>
+              <li>Parent page styles can affect the component's appearance</li>
+              <li>
+                You can customize styling by adding CSS rules after the
+                component loads
+              </li>
+              <li>No manual CSS imports needed - everything is bundled!</li>
+            </ul>
+            <br />
+            For style changes or application updates, please contact
+            <strong>conner@a2opinion.com</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Complete Example Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="ri-code-s-slash-fill"></i>
+          Complete Example
+        </h2>
+        <p class="section-description">
+          Here's a complete HTML page example showing how to integrate the S2F
+          Analytics Dashboard.
+        </p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-language">HTML</span>
+            <button class="copy-btn" onclick="copyCode(this, 'full-example')">
+              <i class="ri-file-copy-line"></i> Copy
+            </button>
+          </div>
+          <pre id="full-example"><code class="language-xml"><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S2F Analytics Dashboard - Documentation</title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+  <title>Analytics Dashboard</title>
+
+  <!-- S2F Analytics Dashboard -->
+  <script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"></script>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      /* Color Palette - Dark Teal Theme */
-      --color-background: #060d0e;
-      --color-background-secondary: #0d1819;
-      --color-card: #111f20;
-      --color-card-hover: #1a3537;
-      --color-surface: #1e293b;
-      --color-surface-light: #334155;
-
-      /* Accent Colors */
-      --color-primary: #3fb4b8;
-      --color-primary-dark: #2d8a8d;
-      --color-accent: #5ac8cd;
-      --color-accent-light: #7dd7db;
-
-      /* Text Colors */
-      --color-text-primary: #e8f5f5;
-      --color-text-secondary: #b0d4d5;
-      --color-text-muted: #6b9a9b;
-
-      /* Border & Divider */
-      --color-border: #2d4f51;
-      --color-divider: #264042;
-
-      /* Status Colors */
-      --color-success: #4ade80;
-      --color-error: #f87171;
-      --color-warning: #fbbf24;
-      --color-info: #60a5fa;
-      --color-code-bg: #0f1419;
-
-      /* Typography */
-      --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
-
-      --font-size-xs: 0.75rem;
-      --font-size-sm: 0.875rem;
-      --font-size-base: 1rem;
-      --font-size-lg: 1.125rem;
-      --font-size-xl: 1.25rem;
-      --font-size-2xl: 1.5rem;
-      --font-size-3xl: 2rem;
-
-      --font-weight-normal: 400;
-      --font-weight-medium: 500;
-      --font-weight-semibold: 600;
-      --font-weight-bold: 700;
-
-      /* Spacing */
-      --spacing-1: 0.25rem;
-      --spacing-2: 0.5rem;
-      --spacing-3: 0.75rem;
-      --spacing-4: 1rem;
-      --spacing-5: 1.25rem;
-      --spacing-6: 1.5rem;
-      --spacing-8: 2rem;
-      --spacing-10: 2.5rem;
-      --spacing-12: 3rem;
-
-      /* Border Radius */
-      --radius-sm: 0.375rem;
-      --radius-md: 0.5rem;
-      --radius-lg: 0.75rem;
-      --radius-xl: 1rem;
-
-      /* Shadows */
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
-
-      /* Transitions */
-      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    body {
-      font-family: var(--font-family-base);
-      background: var(--color-background);
-      color: var(--color-text-primary);
-      line-height: 1.6;
-      min-height: 100vh;
-      padding: 40px 20px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 60px;
-      padding-bottom: 40px;
-      border-bottom: 2px solid var(--color-border);
-    }
-
-    .logo {
-      font-size: 48px;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 10px;
-    }
-
-    .tagline {
-      font-size: 20px;
-      color: var(--color-text-secondary);
-      margin-bottom: 20px;
-    }
-
-    .badges {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--spacing-2);
-      padding: var(--spacing-2) var(--spacing-4);
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: 20px;
-      font-size: var(--font-size-sm);
-      color: var(--color-text-secondary);
-    }
-
-    .badge i {
-      color: var(--color-primary);
-    }
-
-    .section {
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
-      padding: 40px;
-      margin-bottom: 40px;
-      box-shadow: var(--shadow-md);
-    }
-
-    .section-title {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--color-text-primary);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-title i {
-      color: var(--color-primary);
-      font-size: 32px;
-    }
-
-    .section-description {
-      font-size: 16px;
-      color: var(--color-text-secondary);
-      margin-bottom: 30px;
-      line-height: 1.8;
-    }
-
-    .code-block {
-      background: var(--color-code-bg);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
-      padding: var(--spacing-6);
-      margin: var(--spacing-5) 0;
-      position: relative;
-      overflow-x: auto;
-    }
-
-    .code-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .code-language {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      letter-spacing: 0.05em;
-    }
-
-    .copy-btn {
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      color: var(--color-text-secondary);
-      padding: var(--spacing-2) var(--spacing-4);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      font-size: var(--font-size-xs);
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-2);
-      transition: var(--transition-fast);
-    }
-
-    .copy-btn:hover {
-      background: var(--color-card-hover);
-      color: var(--color-text-primary);
-      border-color: var(--color-primary);
-    }
-
-    .copy-btn.copied {
-      background: var(--color-success);
-      border-color: var(--color-success);
-      color: white;
-    }
-
-    pre {
-      margin: 0;
-      font-family: var(--font-family-mono);
-      font-size: var(--font-size-sm);
-      line-height: 1.6;
-      color: var(--color-text-primary);
-    }
-
-    code {
-      font-family: inherit;
-    }
-
-    /* Override highlight.js to match our theme */
-    .hljs {
-      background: transparent !important;
-      padding: 0 !important;
-    }
-
-    .inline-code {
-      background: var(--color-code-bg);
-      color: var(--color-primary);
-      padding: var(--spacing-1) var(--spacing-3);
-      border-radius: var(--radius-sm);
-      font-size: var(--font-size-sm);
-      font-family: var(--font-family-mono);
-    }
-
-    .attribute-list {
-      list-style: none;
-      margin: 20px 0;
-    }
-
-    .attribute-item {
-      background: var(--color-card-hover);
-      border-left: 3px solid var(--color-primary);
-      padding: var(--spacing-4) var(--spacing-5);
-      margin-bottom: var(--spacing-3);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--color-border);
-    }
-
-    .attribute-name {
-      font-weight: 700;
-      color: var(--color-primary);
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-
-    .attribute-type {
-      display: inline-block;
-      background: var(--color-code-bg);
-      color: var(--color-accent);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-family: monospace;
-      margin-left: 8px;
-    }
-
-    .attribute-desc {
-      color: var(--color-text-secondary);
-      font-size: 14px;
-      margin-top: 8px;
-    }
-
-    .step-list {
-      counter-reset: step-counter;
-      list-style: none;
-      margin: 20px 0;
-    }
-
-    .step-item {
-      counter-increment: step-counter;
-      padding-left: 60px;
-      position: relative;
-      margin-bottom: 24px;
-    }
-
-    .step-item::before {
-      content: counter(step-counter);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    .note {
-      background: var(--color-card-hover);
-      border-left: 4px solid var(--color-primary);
-      padding: var(--spacing-4) var(--spacing-5);
-      border-radius: var(--radius-lg);
-      margin: var(--spacing-5) 0;
-    }
-
-    .note-title {
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .note-content {
-      color: var(--color-text-secondary);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .demo-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.2s, box-shadow 0.2s;
-      margin-top: 20px;
-    }
-
-    .demo-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(63, 180, 184, 0.4);
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 20px 10px;
-      }
-
-      .section {
-        padding: 24px 20px;
-      }
-
-      .logo {
-        font-size: 36px;
-      }
-
-      .tagline {
-        font-size: 16px;
-      }
-
-      .section-title {
-        font-size: 24px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <div class="logo">S2F Analytics Dashboard</div>
-      <div class="tagline">High-fidelity analytics web component for chat and booking insights</div>
-      <div class="badges">
-        <span class="badge"><i class="ri-html5-fill"></i> Web Component</span>
-        <span class="badge"><i class="ri-javascript-fill"></i> TypeScript</span>
-        <span class="badge"><i class="ri-table-fill"></i> AG Grid</span>
-        <span class="badge"><i class="ri-pie-chart-2-fill"></i> Analytics</span>
-      </div>
-    </div>
-
-    <!-- Quick Start Section -->
-    <div class="section">
-      <h2 class="section-title">
-        <i class="ri-rocket-fill"></i>
-        Quick Start
-      </h2>
-      <p class="section-description">
-        Add the S2F Analytics Dashboard to any website with just 2 lines of code. No configuration needed - all CSS and dependencies are automatically loaded!
-      </p>
-
-      <div class="code-block">
-        <div class="code-header">
-          <span class="code-language">HTML</span>
-          <button class="copy-btn" onclick="copyCode(this, 'quick-start')">
-            <i class="ri-file-copy-line"></i> Copy
-          </button>
-        </div>
-        <pre id="quick-start"><code class="language-xml">&lt;!-- Add this script tag --&gt;
-&lt;script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"&gt;&lt;/script&gt;
-
-&lt;!-- Add the component --&gt;
-&lt;s2f-analytics-dashboard s2fid="pd-northern-nj"&gt;&lt;/s2f-analytics-dashboard&gt;</code></pre>
-      </div>
-
-      <p style="margin-top: 20px; color: var(--color-text-secondary); font-size: 14px;">
-        ✨ <strong>That's it!</strong> The component automatically loads all required CSS and JavaScript dependencies (Remix Icons, AG Grid, custom styles).
-      </p>
-
-      <div class="note">
-        <div class="note-title">
-          <i class="ri-information-fill"></i>
-          Important: Non-Encapsulated Component
-        </div>
-        <div class="note-content">
-          This web component is <strong>not encapsulated</strong> - it does not use Shadow DOM. This means:
-          <ul style="margin-top: 8px; padding-left: 20px;">
-            <li>Styles are automatically injected into the page when the script loads</li>
-            <li>Parent page styles can affect the component's appearance</li>
-            <li>You can customize styling by adding CSS rules after the component loads</li>
-            <li>No manual CSS imports needed - everything is bundled!</li>
-          </ul>
-          <br>
-          For style changes or application updates, please contact <strong>conner@a2opinion.com</strong>
-        </div>
-      </div>
-    </div>
-
-    <!-- Complete Example Section -->
-    <div class="section">
-      <h2 class="section-title">
-        <i class="ri-code-s-slash-fill"></i>
-        Complete Example
-      </h2>
-      <p class="section-description">
-        Here's a complete HTML page example showing how to integrate the S2F Analytics Dashboard.
-      </p>
-
-      <div class="code-block">
-        <div class="code-header">
-          <span class="code-language">HTML</span>
-          <button class="copy-btn" onclick="copyCode(this, 'full-example')">
-            <i class="ri-file-copy-line"></i> Copy
-          </button>
-        </div>
-        <pre id="full-example"><code class="language-xml">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;Analytics Dashboard&lt;/title&gt;
-
-  &lt;!-- S2F Analytics Dashboard --&gt;
-  &lt;script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"&gt;&lt;/script&gt;
-
-  &lt;style&gt;
     body {
       margin: 0;
       padding: 20px;
       font-family: system-ui, sans-serif;
       background: #0f172a;
     }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;!-- Analytics Dashboard Component --&gt;
-  &lt;s2f-analytics-dashboard s2fid="pd-northern-nj"&gt;&lt;/s2f-analytics-dashboard&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-      </div>
-    </div>
-
-    <!-- Component Attributes Section -->
-    <div class="section">
-      <h2 class="section-title">
-        <i class="ri-settings-3-fill"></i>
-        Component Attributes
-      </h2>
-      <p class="section-description">
-        Configure the dashboard component using HTML attributes.
-      </p>
-
-      <ul class="attribute-list">
-        <li class="attribute-item">
-          <div class="attribute-name">
-            s2fid
-            <span class="attribute-type">string</span>
-            <span class="attribute-type" style="background: #ef4444; color: white;">required</span>
-          </div>
-          <div class="attribute-desc">
-            Market identifier for filtering data. This determines which market's data to display in the dashboard.
-            <br><br>
-            Example: <span class="inline-code">s2fid="pd-northern-nj"</span>
-          </div>
-        </li>
-      </ul>
-
-      <div class="note">
-        <div class="note-title">
-          <i class="ri-lightbulb-fill"></i>
-          Pro Tip
-        </div>
-        <div class="note-content">
-          You can dynamically change the market by updating the <span class="inline-code">s2fid</span> attribute with JavaScript:
-          <div class="code-block" style="margin-top: 12px;">
-            <pre><code class="language-javascript">document.querySelector('s2f-analytics-dashboard').setAttribute('s2fid', 'new-market-id');</code></pre>
-          </div>
+  </style>
+</head>
+<body>
+  <!-- Analytics Dashboard Component -->
+  <s2f-analytics-dashboard s2fid="pd-northern-nj"></s2f-analytics-dashboard>
+</body>
+</html></code></pre>
         </div>
       </div>
-    </div>
 
-    <!-- Features Section -->
-    <div class="section">
-      <h2 class="section-title">
-        <i class="ri-star-fill"></i>
-        Features
-      </h2>
-      <p class="section-description">
-        The S2F Analytics Dashboard includes powerful features for analyzing your chat and booking data.
-      </p>
+      <!-- Component Attributes Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="ri-settings-3-fill"></i>
+          Component Attributes
+        </h2>
+        <p class="section-description">
+          Configure the dashboard component using HTML attributes.
+        </p>
 
-      <ul class="attribute-list">
-        <li class="attribute-item">
-          <div class="attribute-name">
-            <i class="ri-dashboard-fill" style="margin-right: 8px;"></i>
-            Real-time KPIs
-          </div>
-          <div class="attribute-desc">
-            Track total chats, conversion rates, average duration, and revenue opportunities in real-time.
-          </div>
-        </li>
+        <ul class="attribute-list">
+          <li class="attribute-item">
+            <div class="attribute-name">
+              s2fid
+              <span class="attribute-type">string</span>
+              <span
+                class="attribute-type"
+                style="background: #ef4444; color: white"
+                >required</span
+              >
+            </div>
+            <div class="attribute-desc">
+              Market identifier for filtering data. This determines which
+              market's data to display in the dashboard.
+              <br /><br />
+              Example: <span class="inline-code">s2fid="pd-northern-nj"</span>
+            </div>
+          </li>
+        </ul>
 
-        <li class="attribute-item">
-          <div class="attribute-name">
-            <i class="ri-message-3-fill" style="margin-right: 8px;"></i>
-            Channel Performance
+        <div class="note">
+          <div class="note-title">
+            <i class="ri-lightbulb-fill"></i>
+            Pro Tip
           </div>
-          <div class="attribute-desc">
-            Analyze performance across SMS, Voice, and Web chat channels with conversion tracking.
+          <div class="note-content">
+            You can dynamically change the market by updating the
+            <span class="inline-code">s2fid</span> attribute with JavaScript:
+            <div class="code-block" style="margin-top: 12px">
+              <pre><code class="language-javascript">document.querySelector('s2f-analytics-dashboard').setAttribute('s2fid', 'new-market-id');</code></pre>
+            </div>
           </div>
-        </li>
-
-        <li class="attribute-item">
-          <div class="attribute-name">
-            <i class="ri-line-chart-fill" style="margin-right: 8px;"></i>
-            Attribution Analytics
-          </div>
-          <div class="attribute-desc">
-            Track marketing effectiveness by source (Google, Bing, GMB, Facebook, etc.).
-          </div>
-        </li>
-
-        <li class="attribute-item">
-          <div class="attribute-name">
-            <i class="ri-filter-fill" style="margin-right: 8px;"></i>
-            Advanced Filtering
-          </div>
-          <div class="attribute-desc">
-            Filter by booking status, customer type, date ranges, and attribution sources.
-          </div>
-        </li>
-
-        <li class="attribute-item">
-          <div class="attribute-name">
-            <i class="ri-chat-3-fill" style="margin-right: 8px;"></i>
-            Transcript Viewer
-          </div>
-          <div class="attribute-desc">
-            View complete conversation transcripts with markdown formatting support.
-          </div>
-        </li>
-
-        <li class="attribute-item">
-          <div class="attribute-name">
-            <i class="ri-user-fill" style="margin-right: 8px;"></i>
-            Customer Profiles
-          </div>
-          <div class="attribute-desc">
-            Access detailed customer information including contact details and booking history.
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Styling & Customization Section -->
-    <div class="section">
-      <h2 class="section-title">
-        <i class="ri-palette-fill"></i>
-        Styling & Customization
-      </h2>
-      <p class="section-description">
-        The dashboard background is <strong>transparent by default</strong> to blend seamlessly into existing applications.
-        Wrap the component in any container element to control layout and styling.
-      </p>
-
-      <div class="note" style="margin-bottom: 24px;">
-        <div class="note-title">
-          <i class="ri-information-fill"></i>
-          Wrapper Pattern
         </div>
-        <div class="note-content">
-          The web component has a transparent background, allowing it to integrate into any page design.
-          Use a wrapper element (like <span class="inline-code">.analytics-container</span>) to control the
-          background, spacing, and layout:
-          <div class="code-block" style="margin-top: 12px;">
-            <pre><code class="language-xml">&lt;div class="analytics-container"&gt;
-  &lt;s2f-analytics-dashboard s2fid="your-market-id"&gt;&lt;/s2f-analytics-dashboard&gt;
-&lt;/div&gt;
+      </div>
 
-&lt;style&gt;
+      <!-- Features Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="ri-star-fill"></i>
+          Features
+        </h2>
+        <p class="section-description">
+          The S2F Analytics Dashboard includes powerful features for analyzing
+          your chat and booking data.
+        </p>
+
+        <ul class="attribute-list">
+          <li class="attribute-item">
+            <div class="attribute-name">
+              <i class="ri-dashboard-fill" style="margin-right: 8px"></i>
+              Real-time KPIs
+            </div>
+            <div class="attribute-desc">
+              Track total chats, conversion rates, average duration, and revenue
+              opportunities in real-time.
+            </div>
+          </li>
+
+          <li class="attribute-item">
+            <div class="attribute-name">
+              <i class="ri-message-3-fill" style="margin-right: 8px"></i>
+              Channel Performance
+            </div>
+            <div class="attribute-desc">
+              Analyze performance across SMS, Voice, and Web chat channels with
+              conversion tracking.
+            </div>
+          </li>
+
+          <li class="attribute-item">
+            <div class="attribute-name">
+              <i class="ri-line-chart-fill" style="margin-right: 8px"></i>
+              Attribution Analytics
+            </div>
+            <div class="attribute-desc">
+              Track marketing effectiveness by source (Google, Bing, GMB,
+              Facebook, etc.).
+            </div>
+          </li>
+
+          <li class="attribute-item">
+            <div class="attribute-name">
+              <i class="ri-filter-fill" style="margin-right: 8px"></i>
+              Advanced Filtering
+            </div>
+            <div class="attribute-desc">
+              Filter by booking status, customer type, date ranges, and
+              attribution sources.
+            </div>
+          </li>
+
+          <li class="attribute-item">
+            <div class="attribute-name">
+              <i class="ri-chat-3-fill" style="margin-right: 8px"></i>
+              Transcript Viewer
+            </div>
+            <div class="attribute-desc">
+              View complete conversation transcripts with markdown formatting
+              support.
+            </div>
+          </li>
+
+          <li class="attribute-item">
+            <div class="attribute-name">
+              <i class="ri-user-fill" style="margin-right: 8px"></i>
+              Customer Profiles
+            </div>
+            <div class="attribute-desc">
+              Access detailed customer information including contact details and
+              booking history.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Styling & Customization Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="ri-palette-fill"></i>
+          Styling & Customization
+        </h2>
+        <p class="section-description">
+          The dashboard background is <strong>transparent by default</strong> to
+          blend seamlessly into existing applications. Wrap the component in any
+          container element to control layout and styling.
+        </p>
+
+        <div class="note" style="margin-bottom: 24px">
+          <div class="note-title">
+            <i class="ri-information-fill"></i>
+            Wrapper Pattern
+          </div>
+          <div class="note-content">
+            The web component has a transparent background, allowing it to
+            integrate into any page design. Use a wrapper element (like
+            <span class="inline-code">.analytics-container</span>) to control
+            the background, spacing, and layout:
+            <div class="code-block" style="margin-top: 12px">
+              <pre><code class="language-xml"><div class="analytics-container">
+  <s2f-analytics-dashboard s2fid="your-market-id"></s2f-analytics-dashboard>
+</div>
+
+<style>
   .analytics-container {
     background: #0a0f1a; /* Your background color */
     padding: 20px;       /* Optional spacing */
   }
-&lt;/style&gt;</code></pre>
+</style></code></pre>
+            </div>
+            The class name can be anything you choose - use whatever fits your
+            application's structure.
           </div>
-          The class name can be anything you choose - use whatever fits your application's structure.
         </div>
-      </div>
 
-      <p class="section-description">
-        The dashboard uses CSS variables for easy customization. Override these variables in your page's CSS to match your brand.
-      </p>
+        <p class="section-description">
+          The dashboard uses CSS variables for easy customization. Override
+          these variables in your page's CSS to match your brand.
+        </p>
 
-      <div class="code-block">
-        <div class="code-header">
-          <span class="code-language">CSS</span>
-          <button class="copy-btn" onclick="copyCode(this, 'css-variables')">
-            <i class="ri-file-copy-line"></i> Copy
-          </button>
-        </div>
-        <pre id="css-variables"><code class="language-css">/* Add this CSS to your page to customize the dashboard */
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-language">CSS</span>
+            <button class="copy-btn" onclick="copyCode(this, 'css-variables')">
+              <i class="ri-file-copy-line"></i> Copy
+            </button>
+          </div>
+          <pre
+            id="css-variables"
+          ><code class="language-css">/* Add this CSS to your page to customize the dashboard */
 s2f-analytics-dashboard {
   /* Primary brand color (teal by default) */
   --color-primary: #3fb4b8;
@@ -706,138 +779,155 @@ s2f-analytics-dashboard {
   --radius-lg: 8px;
   --radius-xl: 12px;
 }</code></pre>
-      </div>
-
-      <div class="note" style="margin-top: 20px;">
-        <div class="note-title">
-          <i class="ri-information-fill"></i>
-          Background Control
         </div>
-        <div class="note-content">
-          The dashboard container has a <strong>transparent background</strong> by default. You can add a background to the parent element or wrap it in a styled container:
-          <div class="code-block" style="margin-top: 12px;">
-            <pre><code class="language-xml">&lt;div style="background: linear-gradient(135deg, #0f172a 0%, #1e4244 100%); padding: 20px;"&gt;
-  &lt;s2f-analytics-dashboard s2fid="your-id"&gt;&lt;/s2f-analytics-dashboard&gt;
-&lt;/div&gt;</code></pre>
+
+        <div class="note" style="margin-top: 20px">
+          <div class="note-title">
+            <i class="ri-information-fill"></i>
+            Background Control
+          </div>
+          <div class="note-content">
+            The dashboard container has a
+            <strong>transparent background</strong> by default. You can add a
+            background to the parent element or wrap it in a styled container:
+            <div class="code-block" style="margin-top: 12px">
+              <pre><code class="language-xml"><div style="background: linear-gradient(135deg, #0f172a 0%, #1e4244 100%); padding: 20px;">
+  <s2f-analytics-dashboard s2fid="your-id"></s2f-analytics-dashboard>
+</div></code></pre>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="note" style="margin-top: 20px;">
-        <div class="note-title">
-          <i class="ri-lightbulb-fill"></i>
-          Quick Branding Example
-        </div>
-        <div class="note-content">
-          Change the primary color to match your brand:
-          <div class="code-block" style="margin-top: 12px;">
-            <pre><code class="language-xml">&lt;style&gt;
+        <div class="note" style="margin-top: 20px">
+          <div class="note-title">
+            <i class="ri-lightbulb-fill"></i>
+            Quick Branding Example
+          </div>
+          <div class="note-content">
+            Change the primary color to match your brand:
+            <div class="code-block" style="margin-top: 12px">
+              <pre><code class="language-xml"><style>
   s2f-analytics-dashboard {
     --color-primary: #6366f1; /* Indigo */
     --color-accent: #818cf8;
   }
-&lt;/style&gt;</code></pre>
+</style></code></pre>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Browser Support Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="ri-global-fill"></i>
+          Browser Support
+        </h2>
+        <p class="section-description">
+          The dashboard works on all modern browsers with native Web Components
+          support.
+        </p>
+
+        <ul class="attribute-list">
+          <li class="attribute-item">
+            <div class="attribute-name">
+              <i
+                class="ri-chrome-fill"
+                style="margin-right: 8px; color: #4285f4"
+              ></i>
+              Chrome / Edge
+            </div>
+            <div class="attribute-desc">Version 90 or higher</div>
+          </li>
+
+          <li class="attribute-item">
+            <div class="attribute-name">
+              <i
+                class="ri-firefox-fill"
+                style="margin-right: 8px; color: #ff7139"
+              ></i>
+              Firefox
+            </div>
+            <div class="attribute-desc">Version 88 or higher</div>
+          </li>
+
+          <li class="attribute-item">
+            <div class="attribute-name">
+              <i
+                class="ri-safari-fill"
+                style="margin-right: 8px; color: #006cff"
+              ></i>
+              Safari
+            </div>
+            <div class="attribute-desc">Version 14 or higher</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Demo Link -->
+      <div class="section" style="text-align: center">
+        <h2 class="section-title" style="justify-content: center">
+          <i class="ri-eye-fill"></i>
+          See It In Action
+        </h2>
+        <p class="section-description">
+          Check out the live demo to see all features in action.
+        </p>
+        <a href="./index.html" class="demo-link">
+          <i class="ri-external-link-fill"></i>
+          View Live Demo
+        </a>
+      </div>
     </div>
 
-    <!-- Browser Support Section -->
-    <div class="section">
-      <h2 class="section-title">
-        <i class="ri-global-fill"></i>
-        Browser Support
-      </h2>
-      <p class="section-description">
-        The dashboard works on all modern browsers with native Web Components support.
-      </p>
+    <script>
+      // Automatically detect current URL and update code examples
+      (function () {
+        const currentOrigin = window.location.origin;
 
-      <ul class="attribute-list">
-        <li class="attribute-item">
-          <div class="attribute-name">
-            <i class="ri-chrome-fill" style="margin-right: 8px; color: #4285f4;"></i>
-            Chrome / Edge
-          </div>
-          <div class="attribute-desc">Version 90 or higher</div>
-        </li>
-
-        <li class="attribute-item">
-          <div class="attribute-name">
-            <i class="ri-firefox-fill" style="margin-right: 8px; color: #ff7139;"></i>
-            Firefox
-          </div>
-          <div class="attribute-desc">Version 88 or higher</div>
-        </li>
-
-        <li class="attribute-item">
-          <div class="attribute-name">
-            <i class="ri-safari-fill" style="margin-right: 8px; color: #006cff;"></i>
-            Safari
-          </div>
-          <div class="attribute-desc">Version 14 or higher</div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Demo Link -->
-    <div class="section" style="text-align: center;">
-      <h2 class="section-title" style="justify-content: center;">
-        <i class="ri-eye-fill"></i>
-        See It In Action
-      </h2>
-      <p class="section-description">
-        Check out the live demo to see all features in action.
-      </p>
-      <a href="./index.html" class="demo-link">
-        <i class="ri-external-link-fill"></i>
-        View Live Demo
-      </a>
-    </div>
-  </div>
-
-  <script>
-    // Automatically detect current URL and update code examples
-    (function() {
-      const currentOrigin = window.location.origin;
-
-      // Update all placeholder URLs with current domain
-      document.addEventListener('DOMContentLoaded', () => {
-        const placeholders = document.querySelectorAll('code, pre');
-        placeholders.forEach(el => {
-          if (el.textContent.includes('https://your-netlify-site.netlify.app')) {
-            el.textContent = el.textContent.replace(
-              /https:\/\/your-netlify-site\.netlify\.app\/s2f-analytics\.js/g,
-              `${currentOrigin}/s2f-analytics.js`
-            );
-          }
+        // Update all placeholder URLs with current domain
+        document.addEventListener("DOMContentLoaded", () => {
+          const placeholders = document.querySelectorAll("code, pre");
+          placeholders.forEach((el) => {
+            if (
+              el.textContent.includes("https://your-netlify-site.netlify.app")
+            ) {
+              el.textContent = el.textContent.replace(
+                /https:\/\/your-netlify-site\.netlify\.app\/s2f-analytics\.js/g,
+                `${currentOrigin}/s2f-analytics.js`,
+              );
+            }
+          });
         });
+      })();
+
+      function copyCode(button, elementId) {
+        const codeElement = document.getElementById(elementId);
+        const code = codeElement.textContent;
+
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            // Update button state
+            const originalContent = button.innerHTML;
+            button.innerHTML = '<i class="ri-check-line"></i> Copied!';
+            button.classList.add("copied");
+
+            // Reset after 2 seconds
+            setTimeout(() => {
+              button.innerHTML = originalContent;
+              button.classList.remove("copied");
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Failed to copy:", err);
+          });
+      }
+
+      // Initialize syntax highlighting
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
       });
-    })();
-
-    function copyCode(button, elementId) {
-      const codeElement = document.getElementById(elementId);
-      const code = codeElement.textContent;
-
-      navigator.clipboard.writeText(code).then(() => {
-        // Update button state
-        const originalContent = button.innerHTML;
-        button.innerHTML = '<i class="ri-check-line"></i> Copied!';
-        button.classList.add('copied');
-
-        // Reset after 2 seconds
-        setTimeout(() => {
-          button.innerHTML = originalContent;
-          button.classList.remove('copied');
-        }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy:', err);
-      });
-    }
-
-    // Initialize syntax highlighting
-    document.addEventListener('DOMContentLoaded', () => {
-      hljs.highlightAll();
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
