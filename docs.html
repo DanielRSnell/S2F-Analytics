@@ -836,9 +836,7 @@ s2f-analytics-dashboard {
 
     // Initialize syntax highlighting
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('pre code').forEach((block) => {
-        hljs.highlightElement(block);
-      });
+      hljs.highlightAll();
     });
   </script>
 </body>
