@@ -467,7 +467,7 @@
           <pre
             id="quick-start"
           ><code class="language-xml"><!-- Add this script tag -->
-<script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"></script>
+<script type="module" src="https://s2f-chat-analytics.netlify.app/s2f-analytics.js"></script>
 
 <!-- Add the component -->
 <s2f-analytics-dashboard s2fid="pd-northern-nj"></s2f-analytics-dashboard></code></pre>
@@ -538,7 +538,7 @@
   <title>Analytics Dashboard</title>
 
   <!-- S2F Analytics Dashboard -->
-  <script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"></script>
+  <script type="module" src="https://s2f-chat-analytics.netlify.app/s2f-analytics.js"></script>
 
   <style>
     body {
@@ -882,24 +882,6 @@ s2f-analytics-dashboard {
 
     <script>
       // Automatically detect current URL and update code examples
-      (function () {
-        const currentOrigin = window.location.origin;
-
-        // Update all placeholder URLs with current domain
-        document.addEventListener("DOMContentLoaded", () => {
-          const placeholders = document.querySelectorAll("code, pre");
-          placeholders.forEach((el) => {
-            if (
-              el.textContent.includes("https://your-netlify-site.netlify.app")
-            ) {
-              el.textContent = el.textContent.replace(
-                /https:\/\/your-netlify-site\.netlify\.app\/s2f-analytics\.js/g,
-                `${currentOrigin}/s2f-analytics.js`,
-              );
-            }
-          });
-        });
-      })();
 
       function copyCode(button, elementId) {
         const codeElement = document.getElementById(elementId);
