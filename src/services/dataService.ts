@@ -137,28 +137,6 @@ export class DataService {
   /**
    * Calculate advanced analytics from chat records
    */
-  // Helper function to determine if a traffic source is paid
-  private isPaidSource(source: string): boolean {
-    if (!source) return false;
-    const lowerSource = source.toLowerCase();
-
-    // Known paid sources
-    const paidSources = [
-      'adwords', 'google ads', 'googleads',
-      'bing', 'bingads',
-      'yahoo', 'yahooads',
-      'facebook', 'fb', 'facebookads',
-      'instagram', 'ig', 'instagramads',
-      'youtube', 'youtubeads',
-      'linkedin', 'linkedinads',
-      'twitter', 'twitterads',
-      'tiktok', 'tiktokads',
-      'pinterest', 'pinterestads'
-    ];
-
-    return paidSources.some(paid => lowerSource.includes(paid));
-  }
-
   calculateAdvancedAnalytics(records: ChatRecord[]) {
     const totalChats = records.length;
 
