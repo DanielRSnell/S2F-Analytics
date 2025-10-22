@@ -35,6 +35,13 @@ export class DataService {
       return this.fetchMockData(s2fId, dateRange);
     }
 
+    // Check if baseUrl is configured
+    if (!this.baseUrl) {
+      console.warn('[DataService] No API URL configured, falling back to mock data');
+      console.warn('[DataService] Set VITE_NOCODB_BASE_URL and VITE_NOCODB_API_TOKEN environment variables');
+      return this.fetchMockData(s2fId, dateRange);
+    }
+
     try {
       console.log('[DataService] Fetching from NocoDB API');
       const url = new URL(this.baseUrl);
