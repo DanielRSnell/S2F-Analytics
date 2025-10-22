@@ -2,6 +2,8 @@ import { createGrid, GridApi, GridOptions, ColDef } from 'ag-grid-community';
 import { marked } from 'marked';
 import { ChatRecord } from '../types';
 import { DataService } from '../services/dataService';
+import variablesCSS from '../styles/variables.css?raw';
+import dashboardCSS from '../styles/dashboard.css?raw';
 
 export class AnalyticsDashboard extends HTMLElement {
   private shadow: ShadowRoot;
@@ -1455,8 +1457,8 @@ export class AnalyticsDashboard extends HTMLElement {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/styles/ag-grid.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/styles/ag-theme-alpine.css">
       <style>
-        @import url('./src/styles/variables.css');
-        @import url('./src/styles/dashboard.css');
+        ${variablesCSS}
+        ${dashboardCSS}
       </style>
     `;
   }
