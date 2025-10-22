@@ -16,12 +16,9 @@
 .dashboard-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--spacing-10);
+  margin-bottom: var(--spacing-6);
   padding-bottom: var(--spacing-6);
   border-bottom: 1px solid var(--color-border);
-  gap: var(--spacing-4);
-  flex-wrap: wrap;
 }
 
 .dashboard-title {
@@ -33,7 +30,6 @@
   gap: var(--spacing-4);
   letter-spacing: -0.02em;
   flex-wrap: wrap;
-  min-width: 0;
 }
 
 .dashboard-icon {
@@ -61,7 +57,6 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-primary);
-  margin-left: var(--spacing-4);
   white-space: nowrap;
 }
 
@@ -73,10 +68,8 @@
   display: flex;
   align-items: flex-end;
   gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
   flex-wrap: wrap;
-  flex: 1;
-  min-width: 0;
-  justify-content: flex-end;
 }
 
 .date-filter {
@@ -2275,16 +2268,6 @@
 
 /* For smaller containers (like embedded widgets) */
 @media (max-width: 1024px) {
-  .dashboard-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header-filters {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
   .dashboard-title {
     font-size: var(--font-size-2xl);
   }
@@ -2323,13 +2306,8 @@
     font-size: 20px;
   }
 
-  .markid-badge {
-    margin-left: 0;
-    margin-top: var(--spacing-2);
-  }
-
   .header-filters {
-    gap: var(--spacing-2);
+    gap: var(--spacing-3);
   }
 
   .date-filter {

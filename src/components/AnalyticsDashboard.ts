@@ -100,30 +100,31 @@ export class AnalyticsDashboard extends HTMLElement {
               <i class="ri-map-pin-fill"></i> ${this.s2fId}
             </span>
           </div>
-          <div class="header-filters">
-            <div class="date-filter">
-              <label for="start-date">
-                <i class="ri-calendar-line"></i>
-                Start Date
-              </label>
-              <input type="date" id="start-date" class="date-input" />
-            </div>
-            <div class="date-filter">
-              <label for="end-date">
-                <i class="ri-calendar-line"></i>
-                End Date
-              </label>
-              <input type="date" id="end-date" class="date-input" />
-            </div>
-            <button class="filter-apply-btn" id="apply-date-filter">
-              <i class="ri-filter-line"></i>
-              Apply Filters
-            </button>
-            <button class="filter-clear-btn" id="clear-date-filter">
-              <i class="ri-close-line"></i>
-              Clear All
-            </button>
+        </div>
+
+        <div class="header-filters">
+          <div class="date-filter">
+            <label for="start-date">
+              <i class="ri-calendar-line"></i>
+              Start Date
+            </label>
+            <input type="date" id="start-date" class="date-input" />
           </div>
+          <div class="date-filter">
+            <label for="end-date">
+              <i class="ri-calendar-line"></i>
+              End Date
+            </label>
+            <input type="date" id="end-date" class="date-input" />
+          </div>
+          <button class="filter-apply-btn" id="apply-date-filter">
+            <i class="ri-filter-line"></i>
+            Apply Filters
+          </button>
+          <button class="filter-clear-btn" id="clear-date-filter">
+            <i class="ri-close-line"></i>
+            Clear All
+          </button>
         </div>
 
         <div class="summary-section">
