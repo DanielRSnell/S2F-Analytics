@@ -144,16 +144,16 @@ export class AnalyticsDashboard extends HTMLElement {
             <div class="table-controls">
               <div class="filter-buttons" id="filter-buttons">
                 <button class="filter-btn active" data-filter="all">
-                  <i class="ri-list-check"></i> All Chats
+                  <i class="ri-list-check"></i> <span>All Chats</span>
                 </button>
                 <button class="filter-btn" data-filter="booked">
-                  <i class="ri-calendar-check-fill"></i> Booked
+                  <i class="ri-calendar-check-fill"></i> <span>Booked</span>
                 </button>
                 <button class="filter-btn" data-filter="revenue-opportunities">
-                  <i class="ri-money-dollar-circle-line"></i> Revenue Opportunities
+                  <i class="ri-money-dollar-circle-line"></i> <span>Revenue Opportunities</span>
                 </button>
                 <button class="filter-btn" data-filter="incomplete">
-                  <i class="ri-chat-delete-line"></i> Incomplete
+                  <i class="ri-chat-delete-line"></i> <span>Incomplete</span>
                 </button>
               </div>
               <div class="traffic-source-filter">

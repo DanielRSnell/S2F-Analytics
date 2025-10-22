@@ -1346,6 +1346,7 @@
   gap: var(--spacing-4);
   flex: 1;
   justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 .filter-buttons {
@@ -1355,6 +1356,7 @@
   padding: var(--spacing-1);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
+  flex-wrap: wrap;
 }
 
 .filter-btn {
@@ -2442,10 +2444,72 @@
   .table-header {
     flex-direction: column;
     align-items: stretch;
+    gap: var(--spacing-3);
+  }
+
+  .table-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-3);
+  }
+
+  .filter-buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter-btn {
+    flex: 1;
+    justify-content: center;
+    padding: var(--spacing-2) var(--spacing-2);
+    font-size: var(--font-size-xs);
+  }
+
+  .filter-btn span {
+    display: none;
+  }
+
+  .filter-btn i {
+    margin: 0;
+  }
+
+  .traffic-source-filter {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .traffic-source-filter label {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .source-select {
+    flex: 2;
+    min-width: 0;
+  }
+
+  .icon-button {
+    width: 100%;
   }
 
   .table-search {
     max-width: 100%;
+  }
+}
+
+@container dashboard (max-width: 1024px) {
+  .filter-btn span {
+    display: inline;
+  }
+
+  .filter-btn {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-2) var(--spacing-3);
+    white-space: nowrap;
+  }
+
+  .traffic-source-filter {
+    flex-shrink: 0;
   }
 }
 
