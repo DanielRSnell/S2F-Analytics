@@ -20,6 +20,8 @@
   margin-bottom: var(--spacing-10);
   padding-bottom: var(--spacing-6);
   border-bottom: 1px solid var(--color-border);
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
 }
 
 .dashboard-title {
@@ -30,6 +32,8 @@
   align-items: center;
   gap: var(--spacing-4);
   letter-spacing: -0.02em;
+  flex-wrap: wrap;
+  min-width: 0;
 }
 
 .dashboard-icon {
@@ -43,6 +47,7 @@
   font-size: 28px;
   color: var(--color-background);
   box-shadow: 0 8px 16px rgba(63, 180, 184, 0.25);
+  flex-shrink: 0;
 }
 
 .markid-badge {
@@ -57,6 +62,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-primary);
   margin-left: var(--spacing-4);
+  white-space: nowrap;
 }
 
 .markid-badge i {
@@ -67,6 +73,10 @@
   display: flex;
   align-items: flex-end;
   gap: var(--spacing-4);
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+  justify-content: flex-end;
 }
 
 .date-filter {
@@ -96,12 +106,15 @@
   font-size: var(--font-size-sm);
   font-family: var(--font-family-base);
   transition: all var(--transition-base);
-  min-width: 160px;
+  min-width: 140px;
+  width: 100%;
+  max-width: 180px;
   cursor: pointer;
 }
 
 .source-select {
-  min-width: 180px;
+  min-width: 160px;
+  max-width: 200px;
 }
 
 .date-input:focus,
@@ -2259,6 +2272,42 @@
 }
 
 /* Responsive Design */
+
+/* For smaller containers (like embedded widgets) */
+@media (max-width: 1024px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-filters {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .dashboard-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .dashboard-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+
+  .date-input,
+  .source-select {
+    min-width: 120px;
+    max-width: 160px;
+  }
+
+  .filter-apply-btn,
+  .filter-clear-btn {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: var(--font-size-xs);
+  }
+}
+
 @media (max-width: 768px) {
   .dashboard-container {
     padding: var(--spacing-4);
@@ -2266,6 +2315,44 @@
 
   .dashboard-title {
     font-size: var(--font-size-xl);
+  }
+
+  .dashboard-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .markid-badge {
+    margin-left: 0;
+    margin-top: var(--spacing-2);
+  }
+
+  .header-filters {
+    gap: var(--spacing-2);
+  }
+
+  .date-filter {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .date-input,
+  .source-select {
+    min-width: 100px;
+    max-width: none;
+    font-size: var(--font-size-xs);
+  }
+
+  .filter-apply-btn,
+  .filter-clear-btn {
+    padding: var(--spacing-2) var(--spacing-3);
+    gap: var(--spacing-1);
+  }
+
+  .filter-apply-btn i,
+  .filter-clear-btn i {
+    font-size: 14px;
   }
 
   .summary-grid,
@@ -2280,5 +2367,35 @@
 
   .table-search {
     max-width: 100%;
+  }
+}
+
+/* For very small containers */
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: var(--spacing-3);
+  }
+
+  .dashboard-title {
+    font-size: var(--font-size-lg);
+    gap: var(--spacing-2);
+  }
+
+  .header-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .date-filter,
+  .date-input,
+  .source-select {
+    width: 100%;
+    max-width: none;
+  }
+
+  .filter-apply-btn,
+  .filter-clear-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
