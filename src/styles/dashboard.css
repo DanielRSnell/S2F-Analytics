@@ -10,6 +10,8 @@
   color: var(--color-text-primary);
   min-height: 100vh;
   padding: var(--spacing-8);
+  container-type: inline-size;
+  container-name: dashboard;
 }
 
 /* Header Section */
@@ -687,13 +689,13 @@
   gap: var(--spacing-6);
 }
 
-@media (max-width: 1200px) {
+@container dashboard (max-width: 1200px) {
   .referrer-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@container dashboard (max-width: 768px) {
   .referrer-grid {
     display: flex;
     grid-template-columns: none;
@@ -734,7 +736,7 @@
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@container dashboard (max-width: 768px) {
   .referrer-card {
     min-width: 280px;
     flex-shrink: 0;
@@ -869,13 +871,13 @@
   gap: var(--spacing-6);
 }
 
-@media (max-width: 1200px) {
+@container dashboard (max-width: 1200px) {
   .job-type-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@container dashboard (max-width: 768px) {
   .job-type-grid {
     display: flex;
     grid-template-columns: none;
@@ -916,7 +918,7 @@
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@container dashboard (max-width: 768px) {
   .job-type-card {
     min-width: 280px;
     flex-shrink: 0;
@@ -2330,10 +2332,10 @@
   color: var(--color-text-secondary);
 }
 
-/* Responsive Design */
+/* Responsive Design using Container Queries */
 
 /* For smaller containers (like embedded widgets) */
-@media (max-width: 1024px) {
+@container dashboard (max-width: 1024px) {
   .dashboard-title {
     font-size: var(--font-size-2xl);
   }
@@ -2357,7 +2359,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@container dashboard (max-width: 768px) {
   .dashboard-container {
     padding: var(--spacing-4);
   }
@@ -2415,7 +2417,7 @@
 }
 
 /* For very small containers */
-@media (max-width: 480px) {
+@container dashboard (max-width: 480px) {
   .dashboard-container {
     padding: var(--spacing-3);
   }
