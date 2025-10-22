@@ -1,3 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
 [[headers]]
   # Apply these headers to all files
   for = "/*"
