@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S2F Analytics Dashboard - Documentation</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <style>
     * {
       margin: 0;
@@ -179,6 +181,12 @@
 
     code {
       font-family: inherit;
+    }
+
+    /* Override highlight.js to match our theme */
+    .hljs {
+      background: transparent !important;
+      padding: 0 !important;
     }
 
     .inline-code {
@@ -787,6 +795,13 @@ npm run build
         console.error('Failed to copy:', err);
       });
     }
+
+    // Initialize syntax highlighting
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+      });
+    });
   </script>
 </body>
 </html>
