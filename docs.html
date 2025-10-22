@@ -705,16 +705,16 @@
             <span class="inline-code">.analytics-container</span>) to control
             the background, spacing, and layout:
             <div class="code-block" style="margin-top: 12px">
-              <pre><code class="language-xml"><div class="analytics-container">
-  <s2f-analytics-dashboard s2fid="your-market-id"></s2f-analytics-dashboard>
-</div>
+              <pre><code class="language-xml">&lt;div class="analytics-container"&gt;
+  &lt;s2f-analytics-dashboard s2fid="your-market-id"&gt;&lt;/s2f-analytics-dashboard&gt;
+&lt;/div&gt;
 
-<style>
+&lt;style&gt;
   .analytics-container {
     background: #0a0f1a; /* Your background color */
     padding: 20px;       /* Optional spacing */
   }
-</style></code></pre>
+&lt;/style&gt;</code></pre>
             </div>
             The class name can be anything you choose - use whatever fits your
             application's structure.
@@ -791,9 +791,9 @@ s2f-analytics-dashboard {
             <strong>transparent background</strong> by default. You can add a
             background to the parent element or wrap it in a styled container:
             <div class="code-block" style="margin-top: 12px">
-              <pre><code class="language-xml"><div style="background: linear-gradient(135deg, #0f172a 0%, #1e4244 100%); padding: 20px;">
-  <s2f-analytics-dashboard s2fid="your-id"></s2f-analytics-dashboard>
-</div></code></pre>
+              <pre><code class="language-xml">&lt;div style="background: linear-gradient(135deg, #0f172a 0%, #1e4244 100%); padding: 20px;"&gt;
+  &lt;s2f-analytics-dashboard s2fid="your-id"&gt;&lt;/s2f-analytics-dashboard&gt;
+&lt;/div&gt;</code></pre>
             </div>
           </div>
         </div>
@@ -806,12 +806,12 @@ s2f-analytics-dashboard {
           <div class="note-content">
             Change the primary color to match your brand:
             <div class="code-block" style="margin-top: 12px">
-              <pre><code class="language-xml"><style>
+              <pre><code class="language-xml">&lt;style&gt;
   s2f-analytics-dashboard {
     --color-primary: #6366f1; /* Indigo */
     --color-accent: #818cf8;
   }
-</style></code></pre>
+&lt;/style&gt;</code></pre>
             </div>
           </div>
         </div>
