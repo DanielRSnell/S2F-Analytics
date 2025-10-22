@@ -2,7 +2,9 @@
 
 A high-fidelity analytics dashboard web component for tracking and analyzing chat conversations, bookings, and customer interactions. Built with TypeScript, AG Grid, and modern web standards.
 
-📖 **[View Documentation](./docs.html)** - Complete integration guide with code examples
+🚀 **[Live Demo](https://s2f-chat-analytics.netlify.app/)** - See it in action
+
+📖 **[Documentation](https://s2f-chat-analytics.netlify.app/docs)** - Complete integration guide with code examples
 
 ## Features
 
@@ -150,7 +152,7 @@ The project includes a `netlify.toml` configuration file that handles build sett
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="module" src="./dist/s2f-analytics.js"></script>
+    <script type="module" src="https://s2f-chat-analytics.netlify.app/s2f-analytics.js"></script>
   </head>
   <body>
     <!-- Mount the dashboard with a market ID -->
@@ -162,6 +164,16 @@ The project includes a `netlify.toml` configuration file that handles build sett
 ### Component Attributes
 
 - `s2fid` (required) - Market identifier for filtering data (e.g., "pd-northern-nj")
+
+### CDN Usage
+
+The component is deployed and available via CDN. Simply include the script tag in your HTML:
+
+```html
+<script type="module" src="https://s2f-chat-analytics.netlify.app/s2f-analytics.js"></script>
+```
+
+No build step or npm installation required for end users. The component automatically loads all required dependencies (AG Grid, Remix Icons, styles).
 
 ## Data Structure
 
