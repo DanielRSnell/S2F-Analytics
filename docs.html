@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S2F Analytics Dashboard - Documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-primary: #3fb4b8;
+      --color-accent: #2dd4bf;
+      --color-background: #0f172a;
+      --color-surface: #1e293b;
+      --color-surface-light: #334155;
+      --color-text-primary: #f1f5f9;
+      --color-text-secondary: #94a3b8;
+      --color-border: #334155;
+      --color-success: #10b981;
+      --color-code-bg: #0f1419;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+      background: linear-gradient(135deg, var(--color-background) 0%, #1a2332 100%);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .logo {
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      font-size: 20px;
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    .badge i {
+      color: var(--color-primary);
+    }
+
+    .section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title i {
+      color: var(--color-primary);
+      font-size: 32px;
+    }
+
+    .section-description {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    .code-block {
+      background: var(--color-code-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+      position: relative;
+      overflow-x: auto;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .code-language {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      letter-spacing: 0.05em;
+    }
+
+    .copy-btn {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--color-surface-light);
+      color: var(--color-text-primary);
+      border-color: var(--color-primary);
+    }
+
+    .copy-btn.copied {
+      background: var(--color-success);
+      border-color: var(--color-success);
+      color: white;
+    }
+
+    pre {
+      margin: 0;
+      font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #e2e8f0;
+    }
+
+    code {
+      font-family: inherit;
+    }
+
+    .inline-code {
+      background: var(--color-code-bg);
+      color: var(--color-primary);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+    }
+
+    .attribute-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .attribute-item {
+      background: var(--color-surface-light);
+      border-left: 3px solid var(--color-primary);
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+    }
+
+    .attribute-name {
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .attribute-type {
+      display: inline-block;
+      background: var(--color-code-bg);
+      color: var(--color-accent);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: monospace;
+      margin-left: 8px;
+    }
+
+    .attribute-desc {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .step-list {
+      counter-reset: step-counter;
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .step-item {
+      counter-increment: step-counter;
+      padding-left: 60px;
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .step-item::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .note {
+      background: rgba(63, 180, 184, 0.1);
+      border-left: 4px solid var(--color-primary);
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .note-title {
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .note-content {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .demo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 20px;
+    }
+
+    .demo-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(63, 180, 184, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .section {
+        padding: 24px 20px;
+      }
+
+      .logo {
+        font-size: 36px;
+      }
+
+      .tagline {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">S2F Analytics Dashboard</div>
+      <div class="tagline">High-fidelity analytics web component for chat and booking insights</div>
+      <div class="badges">
+        <span class="badge"><i class="ri-html5-fill"></i> Web Component</span>
+        <span class="badge"><i class="ri-javascript-fill"></i> TypeScript</span>
+        <span class="badge"><i class="ri-table-fill"></i> AG Grid</span>
+        <span class="badge"><i class="ri-pie-chart-2-fill"></i> Analytics</span>
+      </div>
+    </div>
+
+    <!-- Quick Start Section -->
+    <div class="section">
+      <h2 class="section-title">
+        <i class="ri-rocket-fill"></i>
+        Quick Start
+      </h2>
+      <p class="section-description">
+        Get started in under 2 minutes. Add the S2F Analytics Dashboard to any website with just a script tag and HTML element.
+      </p>
+
+      <ol class="step-list">
+        <li class="step-item">
+          <strong>Add the script tag to your HTML</strong>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">HTML</span>
+              <button class="copy-btn" onclick="copyCode(this, 'script-tag')">
+                <i class="ri-file-copy-line"></i> Copy
+              </button>
+            </div>
+            <pre id="script-tag"><code>&lt;script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"&gt;&lt;/script&gt;</code></pre>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <strong>Add the component to your page</strong>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">HTML</span>
+              <button class="copy-btn" onclick="copyCode(this, 'component-tag')">
+                <i class="ri-file-copy-line"></i> Copy
+              </button>
+            </div>
+            <pre id="component-tag"><code>&lt;s2f-analytics-dashboard s2fid="pd-northern-nj"&gt;&lt;/s2f-analytics-dashboard&gt;</code></pre>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <strong>Done!</strong>
+          <p style="margin-top: 10px; color: var(--color-text-secondary);">The dashboard will load and display your analytics data.</p>
+        </li>
+      </ol>
+
+      <div class="note">
+        <div class="note-title">
+          <i class="ri-information-fill"></i>
+          Note
+        </div>
+        <div class="note-content">
+          Replace <span class="inline-code">https://your-netlify-site.netlify.app</span> with your actual Netlify deployment URL.
+        </div>
+      </div>
+    </div>
+
+    <!-- Complete Example Section -->
+    <div class="section">
+      <h2 class="section-title">
+        <i class="ri-code-s-slash-fill"></i>
+        Complete Example
+      </h2>
+      <p class="section-description">
+        Here's a complete HTML page example showing how to integrate the S2F Analytics Dashboard.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-language">HTML</span>
+          <button class="copy-btn" onclick="copyCode(this, 'full-example')">
+            <i class="ri-file-copy-line"></i> Copy
+          </button>
+        </div>
+        <pre id="full-example"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Analytics Dashboard&lt;/title&gt;
+
+  &lt;!-- S2F Analytics Dashboard --&gt;
+  &lt;script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"&gt;&lt;/script&gt;
+
+  &lt;style&gt;
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: system-ui, sans-serif;
+      background: #0f172a;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Analytics Dashboard Component --&gt;
+  &lt;s2f-analytics-dashboard s2fid="pd-northern-nj"&gt;&lt;/s2f-analytics-dashboard&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- Component Attributes Section -->
+    <div class="section">
+      <h2 class="section-title">
+        <i class="ri-settings-3-fill"></i>
+        Component Attributes
+      </h2>
+      <p class="section-description">
+        Configure the dashboard component using HTML attributes.
+      </p>
+
+      <ul class="attribute-list">
+        <li class="attribute-item">
+          <div class="attribute-name">
+            s2fid
+            <span class="attribute-type">string</span>
+            <span class="attribute-type" style="background: #ef4444; color: white;">required</span>
+          </div>
+          <div class="attribute-desc">
+            Market identifier for filtering data. This determines which market's data to display in the dashboard.
+            <br><br>
+            Example: <span class="inline-code">s2fid="pd-northern-nj"</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="note">
+        <div class="note-title">
+          <i class="ri-lightbulb-fill"></i>
+          Pro Tip
+        </div>
+        <div class="note-content">
+          You can dynamically change the market by updating the <span class="inline-code">s2fid</span> attribute with JavaScript:
+          <div class="code-block" style="margin-top: 12px;">
+            <pre><code>document.querySelector('s2f-analytics-dashboard').setAttribute('s2fid', 'new-market-id');</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="section">
+      <h2 class="section-title">
+        <i class="ri-star-fill"></i>
+        Features
+      </h2>
+      <p class="section-description">
+        The S2F Analytics Dashboard includes powerful features for analyzing your chat and booking data.
+      </p>
+
+      <ul class="attribute-list">
+        <li class="attribute-item">
+          <div class="attribute-name">
+            <i class="ri-dashboard-fill" style="margin-right: 8px;"></i>
+            Real-time KPIs
+          </div>
+          <div class="attribute-desc">
+            Track total chats, conversion rates, average duration, and revenue opportunities in real-time.
+          </div>
+        </li>
+
+        <li class="attribute-item">
+          <div class="attribute-name">
+            <i class="ri-message-3-fill" style="margin-right: 8px;"></i>
+            Channel Performance
+          </div>
+          <div class="attribute-desc">
+            Analyze performance across SMS, Voice, and Web chat channels with conversion tracking.
+          </div>
+        </li>
+
+        <li class="attribute-item">
+          <div class="attribute-name">
+            <i class="ri-line-chart-fill" style="margin-right: 8px;"></i>
+            Attribution Analytics
+          </div>
+          <div class="attribute-desc">
+            Track marketing effectiveness by source (Google, Bing, GMB, Facebook, etc.).
+          </div>
+        </li>
+
+        <li class="attribute-item">
+          <div class="attribute-name">
+            <i class="ri-filter-fill" style="margin-right: 8px;"></i>
+            Advanced Filtering
+          </div>
+          <div class="attribute-desc">
+            Filter by booking status, customer type, date ranges, and attribution sources.
+          </div>
+        </li>
+
+        <li class="attribute-item">
+          <div class="attribute-name">
+            <i class="ri-chat-3-fill" style="margin-right: 8px;"></i>
+            Transcript Viewer
+          </div>
+          <div class="attribute-desc">
+            View complete conversation transcripts with markdown formatting support.
+          </div>
+        </li>
+
+        <li class="attribute-item">
+          <div class="attribute-name">
+            <i class="ri-user-fill" style="margin-right: 8px;"></i>
+            Customer Profiles
+          </div>
+          <div class="attribute-desc">
+            Access detailed customer information including contact details and booking history.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CDN Alternatives Section -->
+    <div class="section">
+      <h2 class="section-title">
+        <i class="ri-cloud-fill"></i>
+        CDN Alternatives
+      </h2>
+      <p class="section-description">
+        If you prefer to self-host or use a different CDN, you can build and deploy the component yourself.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-language">Bash</span>
+          <button class="copy-btn" onclick="copyCode(this, 'build-commands')">
+            <i class="ri-file-copy-line"></i> Copy
+          </button>
+        </div>
+        <pre id="build-commands"><code># Clone the repository
+git clone https://github.com/your-repo/s2f-analytics.git
+
+# Install dependencies
+npm install
+
+# Build for production
+npm run build
+
+# The built files will be in the 'dist' folder
+# Upload dist/s2f-analytics.js to your CDN or server</code></pre>
+      </div>
+    </div>
+
+    <!-- Browser Support Section -->
+    <div class="section">
+      <h2 class="section-title">
+        <i class="ri-global-fill"></i>
+        Browser Support
+      </h2>
+      <p class="section-description">
+        The dashboard works on all modern browsers with native Web Components support.
+      </p>
+
+      <ul class="attribute-list">
+        <li class="attribute-item">
+          <div class="attribute-name">
+            <i class="ri-chrome-fill" style="margin-right: 8px; color: #4285f4;"></i>
+            Chrome / Edge
+          </div>
+          <div class="attribute-desc">Version 90 or higher</div>
+        </li>
+
+        <li class="attribute-item">
+          <div class="attribute-name">
+            <i class="ri-firefox-fill" style="margin-right: 8px; color: #ff7139;"></i>
+            Firefox
+          </div>
+          <div class="attribute-desc">Version 88 or higher</div>
+        </li>
+
+        <li class="attribute-item">
+          <div class="attribute-name">
+            <i class="ri-safari-fill" style="margin-right: 8px; color: #006cff;"></i>
+            Safari
+          </div>
+          <div class="attribute-desc">Version 14 or higher</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Demo Link -->
+    <div class="section" style="text-align: center;">
+      <h2 class="section-title" style="justify-content: center;">
+        <i class="ri-eye-fill"></i>
+        See It In Action
+      </h2>
+      <p class="section-description">
+        Check out the live demo to see all features in action.
+      </p>
+      <a href="./index.html" class="demo-link">
+        <i class="ri-external-link-fill"></i>
+        View Live Demo
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Automatically detect current URL and update code examples
+    (function() {
+      const currentOrigin = window.location.origin;
+      const scriptUrl = `${currentOrigin}/s2f-analytics.js`;
+
+      // Update all placeholder URLs
+      document.addEventListener('DOMContentLoaded', () => {
+        const placeholders = document.querySelectorAll('code, .inline-code');
+        placeholders.forEach(el => {
+          if (el.textContent.includes('https://your-netlify-site.netlify.app')) {
+            el.textContent = el.textContent.replace(
+              /https:\/\/your-netlify-site\.netlify\.app/g,
+              currentOrigin
+            );
+          }
+        });
+      });
+    })();
+
+    function copyCode(button, elementId) {
+      const codeElement = document.getElementById(elementId);
+      const code = codeElement.textContent;
+
+      navigator.clipboard.writeText(code).then(() => {
+        // Update button state
+        const originalContent = button.innerHTML;
+        button.innerHTML = '<i class="ri-check-line"></i> Copied!';
+        button.classList.add('copied');
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+          button.innerHTML = originalContent;
+          button.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy:', err);
+      });
+    }
+  </script>
+</body>
+</html>

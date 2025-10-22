@@ -1,0 +1,16 @@
+# NocoDB API Configuration
+
+## Please fill in the following information:
+
+NOCODB_BASE_URL=https://your-nocodb-instance.com/api/v1/db/data/noco/YOUR_BASE/YOUR_TABLE
+NOCODB_API_TOKEN=your-api-token-here
+
+## Example:
+# NOCODB_BASE_URL=https://app.nocodb.com/api/v1/db/data/noco/p_abc123/ChatRecords
+# NOCODB_API_TOKEN=xc-token-abc123xyz
+
+## Instructions:
+1. Replace the URL with your actual NocoDB table endpoint
+2. Replace the token with your actual xc-token from NocoDB
+3. Save this file
+4. Run the setup command to configure the environment

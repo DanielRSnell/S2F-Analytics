@@ -1,0 +1,33 @@
+{
+  "name": "s2f-analytics-dashboard",
+  "version": "1.0.0",
+  "description": "A web component dashboard for S2F analytics data powered by AG Grid",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "web-component",
+    "dashboard",
+    "analytics",
+    "ag-grid",
+    "nocodb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ag-grid-community": "^31.0.0",
+    "marked": "^16.4.1",
+    "remixicon": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8"
+  }
+}
