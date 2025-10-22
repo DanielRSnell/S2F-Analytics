@@ -93,7 +93,7 @@
 
 .date-input,
 .source-select {
-  padding: var(--spacing-3) var(--spacing-8) var(--spacing-3) var(--spacing-4);
+  padding: var(--spacing-3) var(--spacing-4);
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -110,6 +110,14 @@
 .source-select {
   min-width: 160px;
   max-width: 200px;
+  padding-right: var(--spacing-8);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233fb4b8'%3E%3Cpath d='M12 15l-5-5h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-3) center;
+  background-size: 20px;
 }
 
 .date-input:focus,
