@@ -1451,15 +1451,9 @@ export class AnalyticsDashboard extends HTMLElement {
 
 
   private getStyles(): string {
-    return `
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/styles/ag-grid.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/styles/ag-theme-alpine.css">
-      <style>
-        @import url('./src/styles/variables.css');
-        @import url('./src/styles/dashboard.css');
-      </style>
-    `;
+    // Styles are now injected globally by index.ts
+    // No need to inject them here
+    return '';
   }
 }
 

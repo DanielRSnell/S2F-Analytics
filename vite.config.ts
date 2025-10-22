@@ -8,6 +8,11 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         docs: resolve(__dirname, 'docs.html'),
       },
+      output: {
+        entryFileNames: 's2f-analytics.js',
+        chunkFileNames: 'chunks/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash][extname]'
+      }
     },
   },
   server: {

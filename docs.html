@@ -342,41 +342,26 @@
         Quick Start
       </h2>
       <p class="section-description">
-        Get started in under 2 minutes. Add the S2F Analytics Dashboard to any website with just a script tag and HTML element.
+        Add the S2F Analytics Dashboard to any website with just 2 lines of code. No configuration needed - all CSS and dependencies are automatically loaded!
       </p>
 
-      <ol class="step-list">
-        <li class="step-item">
-          <strong>Add the script tag to your HTML</strong>
-          <div class="code-block">
-            <div class="code-header">
-              <span class="code-language">HTML</span>
-              <button class="copy-btn" onclick="copyCode(this, 'script-tag')">
-                <i class="ri-file-copy-line"></i> Copy
-              </button>
-            </div>
-            <pre id="script-tag"><code>&lt;script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"&gt;&lt;/script&gt;</code></pre>
-          </div>
-        </li>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-language">HTML</span>
+          <button class="copy-btn" onclick="copyCode(this, 'quick-start')">
+            <i class="ri-file-copy-line"></i> Copy
+          </button>
+        </div>
+        <pre id="quick-start"><code>&lt;!-- Add this script tag --&gt;
+&lt;script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"&gt;&lt;/script&gt;
 
-        <li class="step-item">
-          <strong>Add the component to your page</strong>
-          <div class="code-block">
-            <div class="code-header">
-              <span class="code-language">HTML</span>
-              <button class="copy-btn" onclick="copyCode(this, 'component-tag')">
-                <i class="ri-file-copy-line"></i> Copy
-              </button>
-            </div>
-            <pre id="component-tag"><code>&lt;s2f-analytics-dashboard s2fid="pd-northern-nj"&gt;&lt;/s2f-analytics-dashboard&gt;</code></pre>
-          </div>
-        </li>
+&lt;!-- Add the component --&gt;
+&lt;s2f-analytics-dashboard s2fid="pd-northern-nj"&gt;&lt;/s2f-analytics-dashboard&gt;</code></pre>
+      </div>
 
-        <li class="step-item">
-          <strong>Done!</strong>
-          <p style="margin-top: 10px; color: var(--color-text-secondary);">The dashboard will load and display your analytics data.</p>
-        </li>
-      </ol>
+      <p style="margin-top: 20px; color: var(--color-text-secondary); font-size: 14px;">
+        ✨ <strong>That's it!</strong> The component automatically loads all required CSS and JavaScript dependencies (Remix Icons, AG Grid, custom styles).
+      </p>
 
       <div class="note">
         <div class="note-title">
@@ -386,9 +371,10 @@
         <div class="note-content">
           This web component is <strong>not encapsulated</strong> - it does not use Shadow DOM. This means:
           <ul style="margin-top: 8px; padding-left: 20px;">
+            <li>Styles are automatically injected into the page when the script loads</li>
             <li>Parent page styles can affect the component's appearance</li>
-            <li>The component's styles are loaded via external CSS files</li>
-            <li>You can customize styling by modifying the parent page's CSS</li>
+            <li>You can customize styling by adding CSS rules after the component loads</li>
+            <li>No manual CSS imports needed - everything is bundled!</li>
           </ul>
           <br>
           For style changes or application updates, please contact <strong>conner@a2opinion.com</strong>
@@ -637,6 +623,24 @@ npm run build
   </div>
 
   <script>
+    // Automatically detect current URL and update code examples
+    (function() {
+      const currentOrigin = window.location.origin;
+
+      // Update all placeholder URLs with current domain
+      document.addEventListener('DOMContentLoaded', () => {
+        const placeholders = document.querySelectorAll('code, pre');
+        placeholders.forEach(el => {
+          if (el.textContent.includes('https://your-netlify-site.netlify.app')) {
+            el.textContent = el.textContent.replace(
+              /https:\/\/your-netlify-site\.netlify\.app\/s2f-analytics\.js/g,
+              `${currentOrigin}/s2f-analytics.js`
+            );
+          }
+        });
+      });
+    })();
+
     function copyCode(button, elementId) {
       const codeElement = document.getElementById(elementId);
       const code = codeElement.textContent;

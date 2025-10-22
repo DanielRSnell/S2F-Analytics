@@ -5,17 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S2F Analytics Dashboard</title>
 
-  <!-- Remix Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-
-  <!-- AG Grid CSS (loaded in Shadow DOM, these are optional for the main document) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/styles/ag-grid.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/styles/ag-theme-alpine.css">
-
-  <!-- Load CSS Variables -->
-  <link rel="stylesheet" href="./src/styles/variables.css">
-  <link rel="stylesheet" href="./src/styles/dashboard.css">
-
   <style>
     body {
       margin: 0;
@@ -28,21 +17,12 @@
   <!--
     S2F Analytics Dashboard Web Component
 
-    Usage:
-    Add the s2fid attribute to filter data for a specific market/client
+    All required CSS and scripts are auto-loaded by the component.
+    Just add the script tag and the web component!
   -->
   <s2f-analytics-dashboard s2fid="pd-northern-nj"></s2f-analytics-dashboard>
 
-  <!-- AG Grid Community -->
-  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
-
-  <!-- Web Component Module -->
+  <!-- Single script tag loads everything -->
   <script type="module" src="./src/index.ts"></script>
-
-  <script>
-    // Example: Change s2fId dynamically
-    // const dashboard = document.querySelector('s2f-analytics-dashboard');
-    // dashboard.setAttribute('s2fid', 'new-market-id');
-  </script>
 </body>
 </html>
