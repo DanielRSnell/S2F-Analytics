@@ -157,17 +157,19 @@ export class AnalyticsDashboard extends HTMLElement {
                 </button>
               </div>
               <div class="traffic-source-filter">
-                <label for="attribution-source-filter">
+                <label for="attribution-source-filter" class="attribution-label">
                   <i class="ri-line-chart-line"></i>
-                  Attribution Source
+                  <span>Attribution Source:</span>
                 </label>
-                <select id="attribution-source-filter" class="source-select">
-                  <option value="">All Sources</option>
-                </select>
+                <div class="source-filter-controls">
+                  <select id="attribution-source-filter" class="source-select">
+                    <option value="">All Sources</option>
+                  </select>
+                  <button class="icon-button small" id="column-toggle-btn">
+                    <i class="ri-layout-column-line"></i>
+                  </button>
+                </div>
               </div>
-              <button class="icon-button" id="column-toggle-btn">
-                <i class="ri-layout-column-line"></i>
-              </button>
             </div>
           </div>
 
