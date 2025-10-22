@@ -29,7 +29,7 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-      background: linear-gradient(135deg, var(--color-background) 0%, #1a2332 100%);
+      background: #0a0f1a;
       color: var(--color-text-primary);
       line-height: 1.6;
       min-height: 100vh;
@@ -360,7 +360,7 @@
             <i class="ri-file-copy-line"></i> Copy
           </button>
         </div>
-        <pre id="quick-start"><code>&lt;!-- Add this script tag --&gt;
+        <pre id="quick-start"><code class="language-html">&lt;!-- Add this script tag --&gt;
 &lt;script type="module" src="https://your-netlify-site.netlify.app/s2f-analytics.js"&gt;&lt;/script&gt;
 
 &lt;!-- Add the component --&gt;
@@ -407,7 +407,7 @@
             <i class="ri-file-copy-line"></i> Copy
           </button>
         </div>
-        <pre id="full-example"><code>&lt;!DOCTYPE html&gt;
+        <pre id="full-example"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
@@ -467,7 +467,7 @@
         <div class="note-content">
           You can dynamically change the market by updating the <span class="inline-code">s2fid</span> attribute with JavaScript:
           <div class="code-block" style="margin-top: 12px;">
-            <pre><code>document.querySelector('s2f-analytics-dashboard').setAttribute('s2fid', 'new-market-id');</code></pre>
+            <pre><code class="language-javascript">document.querySelector('s2f-analytics-dashboard').setAttribute('s2fid', 'new-market-id');</code></pre>
           </div>
         </div>
       </div>
@@ -567,7 +567,7 @@
           Use a wrapper element (like <span class="inline-code">.analytics-container</span>) to control the
           background, spacing, and layout:
           <div class="code-block" style="margin-top: 12px;">
-            <pre><code>&lt;div class="analytics-container"&gt;
+            <pre><code class="language-html">&lt;div class="analytics-container"&gt;
   &lt;s2f-analytics-dashboard s2fid="your-market-id"&gt;&lt;/s2f-analytics-dashboard&gt;
 &lt;/div&gt;
 
@@ -593,7 +593,7 @@
             <i class="ri-file-copy-line"></i> Copy
           </button>
         </div>
-        <pre id="css-variables"><code>/* Add this CSS to your page to customize the dashboard */
+        <pre id="css-variables"><code class="language-css">/* Add this CSS to your page to customize the dashboard */
 s2f-analytics-dashboard {
   /* Primary brand color (teal by default) */
   --color-primary: #3fb4b8;
@@ -647,7 +647,7 @@ s2f-analytics-dashboard {
         <div class="note-content">
           The dashboard container has a <strong>transparent background</strong> by default. You can add a background to the parent element or wrap it in a styled container:
           <div class="code-block" style="margin-top: 12px;">
-            <pre><code>&lt;div style="background: linear-gradient(135deg, #0f172a 0%, #1e4244 100%); padding: 20px;"&gt;
+            <pre><code class="language-html">&lt;div style="background: linear-gradient(135deg, #0f172a 0%, #1e4244 100%); padding: 20px;"&gt;
   &lt;s2f-analytics-dashboard s2fid="your-id"&gt;&lt;/s2f-analytics-dashboard&gt;
 &lt;/div&gt;</code></pre>
           </div>
@@ -662,7 +662,7 @@ s2f-analytics-dashboard {
         <div class="note-content">
           Change the primary color to match your brand:
           <div class="code-block" style="margin-top: 12px;">
-            <pre><code>&lt;style&gt;
+            <pre><code class="language-html">&lt;style&gt;
   s2f-analytics-dashboard {
     --color-primary: #6366f1; /* Indigo */
     --color-accent: #818cf8;
@@ -690,7 +690,7 @@ s2f-analytics-dashboard {
             <i class="ri-file-copy-line"></i> Copy
           </button>
         </div>
-        <pre id="build-commands"><code># Clone the repository
+        <pre id="build-commands"><code class="language-bash"># Clone the repository
 git clone https://github.com/your-repo/s2f-analytics.git
 
 # Install dependencies
