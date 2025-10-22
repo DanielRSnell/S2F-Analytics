@@ -545,6 +545,36 @@
         Styling & Customization
       </h2>
       <p class="section-description">
+        The dashboard background is <strong>transparent by default</strong> to blend seamlessly into existing applications.
+        Wrap the component in any container element to control layout and styling.
+      </p>
+
+      <div class="note" style="margin-bottom: 24px;">
+        <div class="note-title">
+          <i class="ri-information-fill"></i>
+          Wrapper Pattern
+        </div>
+        <div class="note-content">
+          The web component has a transparent background, allowing it to integrate into any page design.
+          Use a wrapper element (like <span class="inline-code">.analytics-container</span>) to control the
+          background, spacing, and layout:
+          <div class="code-block" style="margin-top: 12px;">
+            <pre><code>&lt;div class="analytics-container"&gt;
+  &lt;s2f-analytics-dashboard s2fid="your-market-id"&gt;&lt;/s2f-analytics-dashboard&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+  .analytics-container {
+    background: #0a0f1a; /* Your background color */
+    padding: 20px;       /* Optional spacing */
+  }
+&lt;/style&gt;</code></pre>
+          </div>
+          The class name can be anything you choose - use whatever fits your application's structure.
+        </div>
+      </div>
+
+      <p class="section-description">
         The dashboard uses CSS variables for easy customization. Override these variables in your page's CSS to match your brand.
       </p>
 
